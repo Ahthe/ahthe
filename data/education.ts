@@ -3,6 +3,7 @@ export interface EducationItem {
     institution: string;
     url?: string; // Optional URL
     area: string;
+    location?: string; // City, State for institution
     startDate: string; // Format: YYYY-MM-DD
     endDate?: string; // Format: YYYY-MM-DD, optional for ongoing
     // studyType?: string; // Not used in the React component currently
@@ -10,31 +11,40 @@ export interface EducationItem {
     // courses?: string[]; // Not used in the React component currently
   }
   
-  export interface AwardsItem {
+  // Renamed from AwardsItem and updated fields
+  export interface AchievementItem {
     name: string;
-    date: string; // Format: YYYY-MM-DD
-    issuer: string;
-    url?: string; // Optional URL
+    location?: string; // City, State for achievement
+    url?: string; // Optional URL for proof/details
   }
   
   // Populate with your education details
   export const educationData: EducationItem[] = [
     {
       institution: "University Of Mount Union",
-      area: "Bachelor of Science in Computer Science — Dean’s List",
-      startDate: "2020-01-01", 
-      endDate: "2024-05-31", 
+      area: "Bachelor of Science in Computer Science — Dean's List",
+      location: "Alliance, OH",
+      startDate: "2020-01-12",
+      endDate: "2024-05-31",
     },
     // Add other education entries here if you have more
   ];
   
-
-  export const certificatesData: AwardsItem[] = [
+  // Renamed from certificatesData and populated with new achievements
+  export const achievementsData: AchievementItem[] = [
     {
-      name: "React Fundamentals",
-      date: "2023-10-15",
-      issuer: "Online Course Provider",
-      url: "Optional: Link to certificate"
-    }
-    
+      name: "Launched an application with 8000+ users",
+      location: "Dearborn, MI - 2024",
+      // url: "Optional: Link to app or proof"
+    },
+    {
+      name: "Headstarter Fellowship: Won 3rd place as team leader among 3000+ teams",
+      location: "NYC - 2024",
+      // url: "Optional: Link to announcement or proof"
+    },
+    {
+      name: "Won the First Place at GrizzHacks Hackathon for the Best UI/UX among 30+ teams",
+      location: "Rochester, MI - 2024",
+      // url: "Optional: Link to hackathon result or proof"
+    },
   ];

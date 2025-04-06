@@ -1,7 +1,7 @@
 import Container from "@/components/shared/container";
 import Social from "@/components/social";
 import Script from "next/script";
-// import SkillsSection from "@/components/skills-section";
+import SkillsSection from "@/components/skills-section";
 import EducationSection from "@/components/education-section";
 
 const structuredData = {
@@ -67,7 +67,7 @@ export default function About() {
         </div>
       ))}
       <EducationSection />
-      {/* <SkillsSection /> */}
+      <SkillsSection />
       <Social />
       <Script
         id="structured-data"
