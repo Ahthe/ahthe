@@ -1,5 +1,5 @@
 import Container from "@/components/shared/container";
-import SkillsSection from "@/components/skills-section";
+// import SkillsSection from "@/components/skills-section";
 
 export default function Work() {
   return (
@@ -176,8 +176,8 @@ export default function Work() {
 
         </section>
 
-         {/* Add the Skills Section Here */}
-         <SkillsSection />
+         {/* Skills Section */}
+         {/* <SkillsSection /> */}
          
       </main>
     </Container>
