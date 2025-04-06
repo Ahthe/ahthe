@@ -9,8 +9,9 @@ import { ModeToggle } from "./ui/theme-toggle";
 
 const NAV_ITEMS = {
   about: "/",
-  blog: "/blog",
   work: "/work",
+  projects: "/blog",
+  blog: "/blog",
 };
 
 export const Header = () => {
@@ -32,12 +33,12 @@ export const Header = () => {
                 height={40}
                 priority={true}
               />
-              <span className="sr-only">Onurhan Demir</span>
+              <span className="sr-only">Syed Ahthesham Ali</span>
             </Link>
 
             <div className="flex flex-col ml-4">
               <span className="text-medium inline-block font-medium">
-                Onurhan Demir
+                Syed Ahthesham Ali
               </span>
               <span className="opacity-60">software developer</span>
             </div>
