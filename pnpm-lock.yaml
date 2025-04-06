@@ -53,6 +53,9 @@ dependencies:
   react:
     specifier: ^18.3.1
     version: 18.3.1
+  react-icons:
+    specifier: ^5.5.0
+    version: 5.5.0(react@18.3.1)
   sugar-high:
     specifier: ^0.7.5
     version: 0.7.5
@@ -4125,6 +4128,14 @@ packages:
       react: 18.3.1
       scheduler: 0.23.2
 
+  /react-icons@5.5.0(react@18.3.1):
+    resolution: {integrity: sha512-MEFcXdkP3dLo8uumGI5xN3lDFNsRtrjbOEKDLD7yv76v4wpnEq2Lt2qeHaQOr34I/wPN3s3+N08WkQ+CW37Xiw==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 18.3.1
+    dev: false
+
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: true
@@ -5082,6 +5093,7 @@ packages:
       next-mdx-remote: 5.0.0(@types/react@18.3.12)(acorn@8.14.0)(react@18.3.1)
       next-themes: 0.4.3(react-dom@18.3.1)(react@18.3.1)
       react: 18.3.1
+      react-icons: 5.5.0(react@18.3.1)
       sugar-high: 0.7.5
       tailwindcss-animate: 1.0.7(tailwindcss@3.4.15)
     transitivePeerDependencies:
