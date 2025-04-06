@@ -1,4 +1,5 @@
 import Container from "@/components/shared/container";
+import SkillsSection from "@/components/skills-section";
 
 export default function Work() {
   return (
@@ -94,6 +95,10 @@ export default function Work() {
             </ul>
           </article>
         </section>
+
+         {/* Add the Skills Section Here */}
+         <SkillsSection />
+         
       </main>
     </Container>
   );
