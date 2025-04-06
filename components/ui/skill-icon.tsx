@@ -3,14 +3,14 @@ import * as SiIcons from 'react-icons/si';
 import * as RiIcons from 'react-icons/ri';
 import * as MdiIcons from 'react-icons/md';
 // Add other icon sets if needed (e.g., Fa, Di, etc.)
-// import * as FaIcons from 'react-icons/fa';
+import * as FaIcons from 'react-icons/fa';
 
 // Combine all icons into one object for easier lookup
 const allIcons = {
   ...SiIcons,
   ...RiIcons,
   ...MdiIcons,
-  // ...FaIcons,
+  ...FaIcons,
 };
 
 // Helper function to format the icon name for react-icons lookup
@@ -31,7 +31,7 @@ const formatIconName = (iconName: string): string | null => {
   else if (formattedPrefix === 'Ri') reactIconsPrefix = 'Ri';
   else if (formattedPrefix === 'Mdi') reactIconsPrefix = 'Md';
   // Add more mappings if you use other icon sets
-  // else if (formattedPrefix === 'Fa') reactIconsPrefix = 'Fa';
+  else if (formattedPrefix === 'Fa') reactIconsPrefix = 'Fa';
   else return null; // Or handle unknown prefixes
 
   return `${reactIconsPrefix}${formattedName}`;

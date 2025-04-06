@@ -1,6 +1,7 @@
 import Container from "@/components/shared/container";
 import Social from "@/components/social";
 import Script from "next/script";
+// import SkillsSection from "@/components/skills-section";
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -47,7 +48,7 @@ export default function About() {
       text-zinc-800 dark:text-zinc-200 container animate-enter"
     >
       <p className="my-5 text-zinc-800 dark:text-zinc-200">
-        Hi, I&apos;m Onurhan.
+        Hi, I&apos;m Ahthesham.
       </p>
       {paragraphs.map((paragraph, index) => (
         <div
@@ -64,6 +65,7 @@ export default function About() {
           {index === 0 && <hr />}
         </div>
       ))}
+      {/* <SkillsSection /> */}
       <Social />
       <Script
         id="structured-data"
