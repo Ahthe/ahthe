@@ -2,6 +2,7 @@ import Container from "@/components/shared/container";
 import Social from "@/components/social";
 import Script from "next/script";
 // import SkillsSection from "@/components/skills-section";
+import EducationSection from "@/components/education-section";
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -25,7 +26,7 @@ export default function About() {
     <>
       As a Software Developer at{" "}
       <span className="font-medium decoration-wavy underline decoration-from-font text-emerald-950 decoration-emerald-500 dark:text-emerald-50 dark:decoration-emerald-400 tracking-tight">
-        Insider
+        AMC, Dearborn
       </span>
       , I focus on developing comprehensive applications that deliver value
       across various aspects of software. My expertise bridges the gap between
@@ -65,6 +66,7 @@ export default function About() {
           {index === 0 && <hr />}
         </div>
       ))}
+      <EducationSection />
       {/* <SkillsSection /> */}
       <Social />
       <Script

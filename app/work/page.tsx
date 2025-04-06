@@ -18,10 +18,10 @@ export default function Work() {
           <article>
             <header>
               <h2 className="font-medium text-xl mb-1 tracking-tighter">
-                Insider
+                American Muslim Center,  Dearborn
               </h2>
               <time className="text-neutral-600 dark:text-neutral-400 text-sm">
-                Software Developer, 2024 — present
+                Software Developer, march 2024 — present
               </time>
             </header>
             <p>
@@ -34,52 +34,49 @@ export default function Work() {
             </p>
             <ul>
               <li>
-                Developing and customizing solutions for enterprise clients to
-                enhance their business operations.
+              Expanded community reach from 800+ to potentially 1000+ members by developing an event booking website
+              using NextJS, MongoDB, Clerk, and StripeAPI, streamlining registration and addressing social health concerns
               </li>
               <li>
-                Collaborating closely with product managers and designers to
-                deliver user-centric features for B2B applications.
+              Created an interactive Quiz app with NextJS, Sanity.io, and MongoDB for summer school children and
+              implemented engaging features such as leaderboards, increasing student engagement through gamified education
               </li>
-              <li>
+              {/* <li>
                 Implementing efficient and maintainable codebases using modern
                 software development practices.
               </li>
               <li>
                 Actively improving existing systems by identifying bottlenecks
                 and implementing optimizations.
-              </li>
+              </li> */}
             </ul>
           </article>
 
           <article>
             <header>
               <h2 className="font-medium text-xl mb-1 tracking-tighter">
-                Utilify
+                Headstarter AI
               </h2>
               <time className="text-neutral-600 dark:text-neutral-400 text-sm">
-                Frontend Engineer, 2023 — 2024
+                Software Engineer Fellow, july 2024 — october 2024
               </time>
             </header>
             <p>
               I joined{" "}
               <a href="https://utilify.xyz" rel="noopener noreferrer">
-                Utilify
+                Headstarter AI
               </a>{" "}
               to build intuitive interfaces and pages for users and brands.
             </p>
             <ul>
               <li>
-                Successfully converted wireframe designs into active working
-                user interface components.
+              Built 5+ AI apps and APIs using Python, NextJS, OpenAI, Pinecone, StripeAPI with as seen by 8000+ users.
               </li>
-              <li>Developed rule-based form builder for brands.</li>
+              <li>Develop projects from design to deployment leading 4+ engineering fellows using MVC design patterns.</li>
               <li>
-                Developed and implemented user and enterprise dashboard
-                interface, including all related pages, for user interaction and
-                data visualization.
+              Coached by Amazon, Bloomberg and Capital One engineers on Agile, CI/CD, Git, and microservice patterns.
               </li>
-              <li>
+              {/* <li>
                 Stayed abreast of emerging trends and best practices in
                 front-end development, continually honing skills and exploring
                 innovative solutions to technical challenges.
@@ -91,9 +88,92 @@ export default function Work() {
                 </a>{" "}
                 for the souvenir NFT distributed for the UCL final in
                 partnership with Turkish Airlines.
-              </li>
+              </li> */}
             </ul>
           </article>
+
+          <article>
+            <header>
+              <h2 className="font-medium text-xl mb-1 tracking-tighter">
+                University of Mount Union, Alliance, OH  </h2>
+              <time className="text-neutral-600 dark:text-neutral-400 text-sm">
+                Software Engineer and Math Tutor, january 2024 — december 2024
+              </time>
+            </header>
+            <p>
+              I joined{" "}
+              <a href="https://utilify.xyz" rel="noopener noreferrer">
+                University of Mount Union
+              </a>{" "}
+              to build intuitive interfaces and pages for users and brands.
+            </p>
+            <ul>
+              <li>
+              Improved grades of 90% of tutored students from failing grades of 55% to high achievers 85-90% within a semester 
+              by tutoring in Systems Programming, Data Structures, Algorithms, and Mathematics.
+              </li>
+              <li>Analyzed and debugged code in JavaScript, Python, C#, and SQL using IDE tools and debugging techniques,
+                while teaching key math concepts such as calculus, linear algebra, and statistics resulting in a 35% grade increase.</li>
+              {/* <li>
+              Coached by Amazon, Bloomberg and Capital One engineers on Agile, CI/CD, Git, and microservice patterns.
+              </li> */}
+              {/* <li>
+                Stayed abreast of emerging trends and best practices in
+                front-end development, continually honing skills and exploring
+                innovative solutions to technical challenges.
+              </li>
+              <li>
+                Developed the{" "}
+                <a href="https://app.utilify.xyz/ucl" rel="noopener noreferrer">
+                  Campaign page
+                </a>{" "}
+                for the souvenir NFT distributed for the UCL final in
+                partnership with Turkish Airlines.
+              </li> */}
+            </ul>
+          </article>
+
+          <article>
+            <header>
+              <h2 className="font-medium text-xl mb-1 tracking-tighter">
+                ACBSP in VR Technologies-Startup
+              </h2>
+              <time className="text-neutral-600 dark:text-neutral-400 text-sm">
+                Software Engineer, september 2022 — april 2023
+              </time>
+            </header>
+            <p>
+              I joined{" "}
+              <a href="https://utilify.xyz" rel="noopener noreferrer">
+              ACBSP in VR Technologies
+              </a>{" "}
+              to build intuitive interfaces and pages for users and brands.
+            </p>
+            <ul>
+              <li>
+              Tasked with creating a VR action game in Unity to study psychological behavior, improving research studies.
+              </li>
+              <li>Develop projects from design to deployment leading 4+ engineering fellows using MVC design patterns.</li>
+              <li>
+              Constructed a VR action game in Unity using C# and Oculus SDK, targeting the prefrontal cortex to reduce
+              user stress and anxiety by 30%, through strategic object dismemberment scenarios.
+              </li>
+              {/* <li>
+                Stayed abreast of emerging trends and best practices in
+                front-end development, continually honing skills and exploring
+                innovative solutions to technical challenges.
+              </li>
+              <li>
+                Developed the{" "}
+                <a href="https://app.utilify.xyz/ucl" rel="noopener noreferrer">
+                  Campaign page
+                </a>{" "}
+                for the souvenir NFT distributed for the UCL final in
+                partnership with Turkish Airlines.
+              </li> */}
+            </ul>
+          </article>
+
         </section>
 
          {/* Add the Skills Section Here */}
