@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react"; // Optional: If using Suspense features
+import Link from "next/link"; // <-- Import Link
 
 import { getProjectPosts } from "@/app/db/projects"; // Import the new function
 import { CustomMDX } from "@/components/mdx";
@@ -70,7 +71,7 @@ export default function ProjectDetailPage({ params }: Props) {
         {/* Optional: Add links back, GitHub link, live demo link etc. */}
         <div className="mt-12 flex gap-4">
            {/* Example: Link back to projects list */}
-           <a href="/projects" className="text-sm hover:underline">← Back to Projects</a>
+           <Link href="/projects" className="text-sm hover:underline">← Back to Projects</Link>
            {/* You might want to fetch the GitHub link from projectsData or add it to frontmatter */}
            {/* <a href={project.githubLink} target="_blank" rel="noopener noreferrer">View on GitHub</a> */}
         </div>
