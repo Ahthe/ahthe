@@ -12,7 +12,7 @@ export const projectsData: Project[] = [
   {
     Title: "Asteroids",
     Desciption: "A retro asteroids game written in C to introduce Raylib in Game dev reading group at ASU.",
-    Stack: ["C", "Wasm", "Raylib", "Gamedev"],
+    Stack: ["C++", "Wasm", "Raylib", "Gamedev"],
     Link: "https://github.com/prudhvideep/asteroids",
     Demo: "https://prudhvideep.github.io/asteroids/asteroids.html"
   },
@@ -66,7 +66,7 @@ export const projectsData: Project[] = [
   {
     Title: "quill",
     Desciption: "A minimal, dependency-free text editor written in C. Quill provides essential features such as search and syntax highlighting.",
-    Stack: ["C"],
+    Stack: ["C++"],
     Link: "https://github.com/prudhvideep/quill"
   },
   {

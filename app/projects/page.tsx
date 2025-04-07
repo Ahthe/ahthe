@@ -12,7 +12,7 @@ const Projects = () => {
 
   const filterCategories = {
     type: ["Data Science / Ai", "Frontend", "Backend", "Cli", "Gamedev"],
-    language: ["C","Go", "Java", "Python", "TypeScript", "JavaScript", "Bash", "Sql"],
+    language: ["C++","Go", "Java", "Python", "TypeScript", "JavaScript", "Bash", "Sql"],
     technology: [
       "GraphQl", "gRPC", "Tailwind", "Redis", "PostgreSQL", "React", "D3",
       "Next", "Node", "Docker", "Kubernetes", "Terraform", "SpringBoot",
