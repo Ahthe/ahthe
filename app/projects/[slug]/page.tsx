@@ -8,14 +8,10 @@ import { CustomMDX } from "@/components/mdx";
 import Container from "@/components/shared/container";
 // Import other components or utils if needed (e.g., formatDate)
 
-type Props = {
-  params: { slug: string }; // No need for Promise here
-};
-
 // Optional: Generate Metadata dynamically
 export async function generateMetadata({
   params,
-}: Props): Promise<Metadata | undefined> {
+}: { params: { slug: string } }): Promise<Metadata | undefined> {
   const project = getProjectPosts().find((p) => p.slug === params.slug);
   if (!project) {
     return;
@@ -45,7 +41,7 @@ export async function generateStaticParams() {
 }
 
 
-export default function ProjectDetailPage({ params }: Props) {
+export default function ProjectDetailPage({ params }: { params: { slug: string } }) {
   const project = getProjectPosts().find((p) => p.slug === params.slug);
 
   if (!project) {
