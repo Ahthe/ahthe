@@ -40,8 +40,8 @@ export async function generateStaticParams() {
   }));
 }
 
-
-export default function ProjectDetailPage({ params }: { params: { slug: string } }) {
+// Make the component async to match Next.js expectations
+export default async function ProjectDetailPage({ params }: { params: { slug: string } }) {
   const project = getProjectPosts().find((p) => p.slug === params.slug);
 
   if (!project) {
