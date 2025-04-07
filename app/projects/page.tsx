@@ -1,185 +1,134 @@
-import Container from "@/components/shared/container";
-import SkillsSection from "@/components/skills-section";
+"use client"
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
-export default function Projects() {
+import { Project, projectsData } from "@/data/projects";
+
+const Projects = () => {
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [activeFilter, setActiveFilter] = useState<string | null>(null);
+
+  const filterCategories = {
+    type: ["Data Science / Ai", "Frontend", "Backend", "Cli", "Gamedev"],
+    language: ["C","Go", "Java", "Python", "TypeScript", "JavaScript", "Bash", "Sql"],
+    technology: [
+      "GraphQl", "gRPC", "Tailwind", "Redis", "PostgreSQL", "React", "D3",
+      "Next", "Node", "Docker", "Kubernetes", "Terraform", "SpringBoot",
+      "Oracle", "MySql", "MongoDB", "TensorFlow", "Scikitlearn", "Firebase", "aws"
+    ]
+  };
+
+  useEffect(() => {
+    setProjects(projectsData);
+  }, []);
+
+  const handleFilterClick = (element: string) => {
+    setActiveFilter(activeFilter === element ? null : element);
+  };
+
+  const filteredProjects = projects.filter((project) => {
+    if (!activeFilter) return true;
+    return project.Stack.includes(activeFilter);
+  });
+
+  const isTagHighlighted = (tag: string) => activeFilter === tag;
+
   return (
-    <Container size="large">
-      <main className="prose prose-neutral dark:prose-invert">
-        <header>
-          <p>
-            On a mission to create impactful applications that engage users and
-            drive value for businesses. Here&apos;s a summary of my journey so
-            far.
-          </p>
-          <hr className="my-6 border-neutral-200 dark:border-neutral-800" />
-        </header>
-
-        <section>
-          <article>
-            <header>
-              <h2 className="font-medium text-xl mb-1 tracking-tighter">
-                American Muslim Center,  Dearborn
+    <div className="mt-6 ml-auto mr-auto w-9/10 md:w-9/10 max-w-3xl opacity:1 transform:none">
+      <p className="font-medium text-slate-700 dark:text-slate-300">
+        Learn to build, build to learn
+      </p>
+      <div className="w-full mt-4 flex flex-col">
+        <div className="w-full flex flex-col space-y-4">
+          {Object.entries(filterCategories).map(([category, elements]) => (
+            <div key={category} className="w-full">
+              <h2 className="text-slate-500 dark:text-slate-400">
+                Filter by {category}:
               </h2>
-              <time className="text-neutral-600 dark:text-neutral-400 text-sm">
-                Software Developer, march 2024 — present
-              </time>
-            </header>
-            <p>
-              At Insider, I am part of the Partner Solution Development team,
-              where I contribute to the development of B2B SaaS solutions
-              tailored to our clients&apos; needs. My role involves
-              collaborating with cross-functional teams to deliver scalable and
-              efficient software solutions that help businesses grow and
-              optimize their workflows.
-            </p>
-            <ul>
-              <li>
-              Expanded community reach from 800+ to potentially 1000+ members by developing an event booking website
-              using NextJS, MongoDB, Clerk, and StripeAPI, streamlining registration and addressing social health concerns
-              </li>
-              <li>
-              Created an interactive Quiz app with NextJS, Sanity.io, and MongoDB for summer school children and
-              implemented engaging features such as leaderboards, increasing student engagement through gamified education
-              </li>
-              {/* <li>
-                Implementing efficient and maintainable codebases using modern
-                software development practices.
-              </li>
-              <li>
-                Actively improving existing systems by identifying bottlenecks
-                and implementing optimizations.
-              </li> */}
-            </ul>
-          </article>
-
-          <article>
-            <header>
-              <h2 className="font-medium text-xl mb-1 tracking-tighter">
-                Headstarter AI
-              </h2>
-              <time className="text-neutral-600 dark:text-neutral-400 text-sm">
-                Software Engineer Fellow, july 2024 — october 2024
-              </time>
-            </header>
-            <p>
-              I joined{" "}
-              <a href="https://utilify.xyz" rel="noopener noreferrer">
-                Headstarter AI
-              </a>{" "}
-              to build intuitive interfaces and pages for users and brands.
-            </p>
-            <ul>
-              <li>
-              Built 5+ AI apps and APIs using Python, NextJS, OpenAI, Pinecone, StripeAPI with as seen by 8000+ users.
-              </li>
-              <li>Develop projects from design to deployment leading 4+ engineering fellows using MVC design patterns.</li>
-              <li>
-              Coached by Amazon, Bloomberg and Capital One engineers on Agile, CI/CD, Git, and microservice patterns.
-              </li>
-              {/* <li>
-                Stayed abreast of emerging trends and best practices in
-                front-end development, continually honing skills and exploring
-                innovative solutions to technical challenges.
-              </li>
-              <li>
-                Developed the{" "}
-                <a href="https://app.utilify.xyz/ucl" rel="noopener noreferrer">
-                  Campaign page
-                </a>{" "}
-                for the souvenir NFT distributed for the UCL final in
-                partnership with Turkish Airlines.
-              </li> */}
-            </ul>
-          </article>
-
-          <article>
-            <header>
-              <h2 className="font-medium text-xl mb-1 tracking-tighter">
-                University of Mount Union, Alliance, OH  </h2>
-              <time className="text-neutral-600 dark:text-neutral-400 text-sm">
-                Software Engineer and Math Tutor, january 2024 — december 2024
-              </time>
-            </header>
-            <p>
-              I joined{" "}
-              <a href="https://utilify.xyz" rel="noopener noreferrer">
-                University of Mount Union
-              </a>{" "}
-              to build intuitive interfaces and pages for users and brands.
-            </p>
-            <ul>
-              <li>
-              Improved grades of 90% of tutored students from failing grades of 55% to high achievers 85-90% within a semester 
-              by tutoring in Systems Programming, Data Structures, Algorithms, and Mathematics.
-              </li>
-              <li>Analyzed and debugged code in JavaScript, Python, C#, and SQL using IDE tools and debugging techniques,
-                while teaching key math concepts such as calculus, linear algebra, and statistics resulting in a 35% grade increase.</li>
-              {/* <li>
-              Coached by Amazon, Bloomberg and Capital One engineers on Agile, CI/CD, Git, and microservice patterns.
-              </li> */}
-              {/* <li>
-                Stayed abreast of emerging trends and best practices in
-                front-end development, continually honing skills and exploring
-                innovative solutions to technical challenges.
-              </li>
-              <li>
-                Developed the{" "}
-                <a href="https://app.utilify.xyz/ucl" rel="noopener noreferrer">
-                  Campaign page
-                </a>{" "}
-                for the souvenir NFT distributed for the UCL final in
-                partnership with Turkish Airlines.
-              </li> */}
-            </ul>
-          </article>
-
-          <article>
-            <header>
-              <h2 className="font-medium text-xl mb-1 tracking-tighter">
-                ACBSP in VR Technologies-Startup
-              </h2>
-              <time className="text-neutral-600 dark:text-neutral-400 text-sm">
-                Software Engineer, september 2022 — april 2023
-              </time>
-            </header>
-            <p>
-              I joined{" "}
-              <a href="https://utilify.xyz" rel="noopener noreferrer">
-              ACBSP in VR Technologies
-              </a>{" "}
-              to build intuitive interfaces and pages for users and brands.
-            </p>
-            <ul>
-              <li>
-              Tasked with creating a VR action game in Unity to study psychological behavior, improving research studies.
-              </li>
-              <li>Develop projects from design to deployment leading 4+ engineering fellows using MVC design patterns.</li>
-              <li>
-              Constructed a VR action game in Unity using C# and Oculus SDK, targeting the prefrontal cortex to reduce
-              user stress and anxiety by 30%, through strategic object dismemberment scenarios.
-              </li>
-              {/* <li>
-                Stayed abreast of emerging trends and best practices in
-                front-end development, continually honing skills and exploring
-                innovative solutions to technical challenges.
-              </li>
-              <li>
-                Developed the{" "}
-                <a href="https://app.utilify.xyz/ucl" rel="noopener noreferrer">
-                  Campaign page
-                </a>{" "}
-                for the souvenir NFT distributed for the UCL final in
-                partnership with Turkish Airlines.
-              </li> */}
-            </ul>
-          </article>
-
-        </section>
-
-         {/* Add the Skills Section Here */}
-         {/* <SkillsSection /> */}
-         
-      </main>
-    </Container>
+              <div className="mt-4 flex flex-wrap gap-4">
+                {elements.map((element) => (
+                  <div
+                    key={element}
+                    onClick={() => handleFilterClick(element)}
+                    className={`border p-1 text-sm font-medium rounded-md hover:cursor-pointer hover:scale-105 transition-colors
+                      ${activeFilter === element 
+                        ? 'bg-blue-200 text-blue-700 dark:bg-blue-900 dark:text-blue-300' 
+                        : 'bg-slate-200 text-slate-500 hover:text-slate-600 dark:bg-slate-800 dark:text-slate-300 dark:hover:text-slate-200'}`}
+                  >
+                    {element}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+          <hr className="mt-4" />
+        </div>
+        <div className="w-full grid gap-4">
+          {filteredProjects.map((project, index) => (
+            <React.Fragment key={index}>
+              <div className="border-b p-2 mt-2 w-full rounded-md flex flex-col md:flex-row gap-4 dark:border-neutral-800">
+                <div className="w-full md:w-1/2 flex flex-wrap order-last md:order-1 gap-2 place-content-start">
+                  {project.Stack.map((tech) => (
+                    <div
+                      key={tech}
+                      className={`p-1 text-center text-sm font-medium rounded-md hover:cursor-pointer hover:scale-105 whitespace-nowrap transition-colors
+                        ${isTagHighlighted(tech)
+                          ? 'bg-blue-200 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
+                          : 'bg-slate-200 text-slate-500 hover:text-slate-600 dark:bg-slate-800 dark:text-slate-300 dark:hover:text-slate-200'}`}
+                      onClick={() => handleFilterClick(tech)}
+                    >
+                      {tech}
+                    </div>
+                  ))}
+                </div>
+                <div className="w-full md:w-1/2 flex flex-col space-y-2">
+                  <h1 className="text-xl font-semibold max-w-full truncate dark:text-white">
+                    {project.Title}
+                  </h1>
+                  <p className="font-normal text-slate-500 dark:text-slate-300 overflow-hidden text-ellipsis max-h-20 break-words line-clamp-3">
+                    {project.Desciption}
+                  </p>
+                  <div className="flex flex-row justify-start gap-4 mt-2">
+                    <motion.a
+                      href={project.Link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center text-sm text-gray-500 hover:font-semibold hover:text-gray-900 transition-colors dark:text-gray-400 dark:hover:text-gray-200"
+                      whileHover={{
+                        scale: 1.05,
+                      }}
+                    >
+                      <FaGithub className="mr-1" />
+                      <span className="underline hover:no-underline">
+                        Source
+                      </span>
+                    </motion.a>
+                    {project.Demo && (
+                      <motion.a
+                        href={project.Demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center text-sm text-gray-500 hover:font-semibold hover:text-gray-900 transition-colors dark:text-gray-400 dark:hover:text-gray-200"
+                        whileHover={{
+                          scale: 1.05,
+                        }}
+                      >
+                        <FaExternalLinkAlt className="mr-1" />
+                        <span className="underline hover:no-underline">
+                          Read More
+                        </span>
+                      </motion.a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+    </div>
   );
-}
+};
+
+export default Projects;

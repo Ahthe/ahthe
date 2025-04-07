@@ -10,7 +10,7 @@ import { ModeToggle } from "./ui/theme-toggle";
 const NAV_ITEMS = {
   about: "/",
   work: "/work",
-  projects: "/blog",
+  projects: "/projects",
   blog: "/blog",
 };
 
