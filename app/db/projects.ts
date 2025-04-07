@@ -79,3 +79,12 @@ export function getProjectPosts() {
   // Adjust the path to your projects content directory
   return getMDXData(path.join(process.cwd(), "content", "projects"));
 }
+
+type Props = {
+  params: Promise<{ slug: string }>;
+};
+
+export default async function BlogDetailPage({ params }: Props) {
+  const { slug } = await params;
+  // ...
+}

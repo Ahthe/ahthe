@@ -8,11 +8,17 @@ import { CustomMDX } from "@/components/mdx";
 import Container from "@/components/shared/container";
 // Import other components or utils if needed (e.g., formatDate)
 
+// Define the Props type with Promise
+type Props = {
+  params: Promise<{ slug: string }>;
+};
+
 // Optional: Generate Metadata dynamically
 export async function generateMetadata({
   params,
-}: { params: { slug: string } }): Promise<Metadata | undefined> {
-  const project = getProjectPosts().find((p) => p.slug === params.slug);
+}: Props): Promise<Metadata | undefined> {
+  const { slug } = await params;
+  const project = getProjectPosts().find((p) => p.slug === slug);
   if (!project) {
     return;
   }
@@ -41,8 +47,9 @@ export async function generateStaticParams() {
 }
 
 // Make the component async to match Next.js expectations
-export default async function ProjectDetailPage({ params }: { params: { slug: string } }) {
-  const project = getProjectPosts().find((p) => p.slug === params.slug);
+export default async function ProjectDetailPage({ params }: Props) {
+  const { slug } = await params;
+  const project = getProjectPosts().find((p) => p.slug === slug);
 
   if (!project) {
     notFound(); // Show 404 if project MDX file doesn't exist
