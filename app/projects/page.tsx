@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import Link from "next/link";
 import Container from "@/components/shared/container";
 
 import { Project, projectsData } from "@/data/projects";
@@ -107,6 +108,7 @@ const Projects = () => {
                             Source
                           </span>
                         </motion.a>
+
                         {project.Demo && (
                           <motion.a
                             href={project.Demo}
@@ -119,9 +121,25 @@ const Projects = () => {
                           >
                             <FaExternalLinkAlt className="mr-1" />
                             <span className="underline hover:no-underline">
-                              Read More
+                              Link
                             </span>
                           </motion.a>
+                        )}
+                        
+                        {project.slug && (
+                          <Link href={`/projects/${project.slug}`} passHref legacyBehavior>
+                            <motion.a
+                              className="flex items-center text-sm hover:font-semibold transition-colors no-underline"
+                              whileHover={{
+                                scale: 1.05,
+                              }}
+                            >
+                              <FaExternalLinkAlt className="mr-1" />
+                              <span className="underline hover:no-underline">
+                                Read More
+                              </span>
+                            </motion.a>
+                          </Link>
                         )}
                       </div>
                     </div>

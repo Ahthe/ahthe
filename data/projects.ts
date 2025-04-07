@@ -5,6 +5,7 @@ export interface Project {
   Stack: string[];
   Link?: string;
   Demo?: string;
+  slug?: string;
 }
 
 // Projects data
@@ -14,7 +15,8 @@ export const projectsData: Project[] = [
     Desciption: "A retro asteroids game written in C to introduce Raylib in Game dev reading group at ASU.",
     Stack: ["C++", "Wasm", "Raylib", "Gamedev"],
     Link: "https://github.com/prudhvideep/asteroids",
-    Demo: "https://prudhvideep.github.io/asteroids/asteroids.html"
+    Demo: "https://prudhvideep.github.io/asteroids/asteroids.html",
+    slug: "tradewise"
   },
   {
     Title: "fnd",
