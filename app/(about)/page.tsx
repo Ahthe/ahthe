@@ -17,7 +17,7 @@ const structuredData = {
   sameAs: [
     "https://github.com/onurhan1337",
     "https://youtube.com/@onurhandev",
-    "https://read.cv/onurhan",
+    "https://300040543422795776.hello.cv/",
   ],
 };
 
