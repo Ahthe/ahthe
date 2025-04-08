@@ -32,7 +32,7 @@ export async function generateMetadata({
   let ogImage =
     new URL(
       "/opengraph-image",
-      process.env.NEXT_PUBLIC_APP_URL || "https://onurhan.dev"
+      process.env.NEXT_PUBLIC_APP_URL || "https://ahthe.vercel.app/"
     ).toString() + `?title=${encodeURIComponent(title)}`;
 
   return {
@@ -44,7 +44,7 @@ export async function generateMetadata({
       description,
       type: "article",
       publishedTime,
-      url: `https://onurhan.dev/blog/${blog.slug}`,
+      url: `https://ahthe.vercel.app//blog/${blog.slug}`,
       images: [
         {
           url: ogImage,
@@ -88,12 +88,12 @@ export default async function BlogDetailPage({ params }: Props) {
             dateModified: blog.metadata.publishedAt,
             description: blog.metadata.summary,
             image: blog.metadata.image
-              ? `https://onurhan.dev${blog.metadata.image}`
-              : `https://onurhan.dev/og?title=${blog.metadata.title}`,
-            url: `https://onurhan.dev/blog/${blog.slug}`,
+              ? `https://ahthe.vercel.app/${blog.metadata.image}`
+              : `https://ahthe.vercel.app//og?title=${blog.metadata.title}`,
+            url: `https://ahthe.vercel.app//blog/${blog.slug}`,
             author: {
               "@type": "Person",
-              name: "Onurhan Demir",
+              name: "Syed Ahthesham Alir",
             },
           }),
         }}

@@ -30,7 +30,7 @@ export default function Social() {
           <span className="ml-3">Youtube</span>
         </div>
       </SocialButton>
-      <SocialButton href="https://github.com/onurhan1337">
+      <SocialButton href="https://github.com/ahthe">
         <div className="flex flex-row items-center">
           <IconGithub />
           <span className="ml-3">Github</span>

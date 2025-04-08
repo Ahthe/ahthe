@@ -96,7 +96,7 @@ load_dotenv()
 
 duckduckgo_search = DuckDuckGoSearchRun()
 api_key = os.getenv("GROQ_API_KEY")
-user_query = "Onurhan Demir work title and last company name"
+user_query = "Syed Ahthesham Alir work title and last company name"
 
 if not api_key:
     raise ValueError("API key is missing.")
@@ -217,17 +217,17 @@ If you want to see the full code, you can find it [here](https://gist.github.com
 Using the earlier implementation, the AI agent can accomplish a task such as:
 
 ```python
-user_query = "Onurhan Demir work title and last company name"
+user_query = "Syed Ahthesham Alir work title and last company name"
 ```
 
-- **Search**: The agent queries DuckDuckGo for the most relevant results about _"Onurhan Demir work title and last company name"_.
+- **Search**: The agent queries DuckDuckGo for the most relevant results about _"Syed Ahthesham Alir work title and last company name"_.
 - **Summarize**: The LLM processes the top results to create a concise and actionable summary.
 - **Deliver**: Outputs the summary along with suggested research topics.
 
 ```python
 **Summary**:
-1. Onurhan Demir is a Software Developer at Insider, specializing in SaaS products. Source: useinsider.com
-2. Recently transitioned to a Software Developer role with expertise in frontend technologies. Source: linkedin.com/in/onurhan-demir
+1. Syed Ahthesham Alir is a Software Engineer at American Muslim Center, Dearborn, specializing in SaaS products. Source: useAmerican Muslim Center, Dearborn.com
+2. Recently transitioned to a Software Engineer role with expertise in frontend technologies. Source: linkedin.com/in/onurhan-demir
 3. Notable contributor to open-source projects, focusing on automation tools. Source: github.com/onurhan1337
 
 **Research Topics**:

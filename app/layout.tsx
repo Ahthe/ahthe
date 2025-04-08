@@ -11,28 +11,28 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_APP_URL || "https://onurhan.dev"
+    process.env.NEXT_PUBLIC_APP_URL || "https://ahthe.vercel.app/"
   ),
   title: {
-    default: "Onurhan Demir - Software Developer",
-    template: "%s | Onurhan Demir",
+    default: "Syed Ahthesham Alir - Software Engineer",
+    template: "%s | Syed Ahthesham Alir",
   },
   description:
-    "Onurhan Demir - Software Developer at Insider, focused on building comprehensive applications and micro products.",
+    "Syed Ahthesham Alir - Software Engineer at American Muslim Center, Dearborn, focused on building comprehensive applications and micro products.",
   openGraph: {
-    title: "Onurhan Demir - Software Developer",
+    title: "Syed Ahthesham Alir - Software Engineer",
     description:
-      "Software Developer at Insider, focused on building comprehensive applications and micro products.",
-    url: "https://onurhan.dev",
-    siteName: "Onurhan Demir",
+      "Software Engineer at American Muslim Center, Dearborn, focused on building comprehensive applications and micro products.",
+    url: "https://ahthe.vercel.app/",
+    siteName: "Syed Ahthesham Alir",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://onurhan.dev/logo.svg",
+        url: "https://ahthe.vercel.app//logo.svg",
         width: 1200,
         height: 630,
-        alt: "Onurhan Demir",
+        alt: "Syed Ahthesham Alir",
       },
     ],
   },
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: "Onurhan Demir",
+    title: "Syed Ahthesham Alir",
     card: "summary_large_image",
     site: "@onurhan1337",
     creator: "@onurhan1337",

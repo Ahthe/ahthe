@@ -7,15 +7,15 @@ import EducationSection from "@/components/education-section";
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Onurhan Demir",
-  jobTitle: "Software Developer",
+  name: "Syed Ahthesham Alir",
+  jobTitle: "Software Engineer",
   worksFor: {
     "@type": "Organization",
-    name: "Insider",
+    name: "American Muslim Center, Dearborn",
   },
-  url: "https://onurhan.dev",
+  url: "https://ahthe.vercel.app/",
   sameAs: [
-    "https://github.com/onurhan1337",
+    "https://github.com/ahthe",
     "https://youtube.com/@onurhandev",
     "https://300040543422795776.hello.cv/",
   ],
@@ -24,7 +24,7 @@ const structuredData = {
 export default function About() {
   const paragraphs = [
     <>
-      As a Software Developer at{" "}
+      As a Software Engineer at{" "}
       <span className="font-medium decoration-wavy underline decoration-from-font text-emerald-950 decoration-emerald-500 dark:text-emerald-50 dark:decoration-emerald-400 tracking-tight">
         AMC, Dearborn
       </span>

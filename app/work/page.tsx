@@ -21,11 +21,11 @@ export default function Work() {
                 American Muslim Center,  Dearborn
               </h2>
               <time className="text-neutral-600 dark:text-neutral-400 text-sm">
-                Software Developer, march 2024 — present
+                Software Engineer, march 2024 — present
               </time>
             </header>
             <p>
-              At Insider, I am part of the Partner Solution Development team,
+              At American Muslim Center, Dearborn, I am part of the Partner Solution Development team,
               where I contribute to the development of B2B SaaS solutions
               tailored to our clients&apos; needs. My role involves
               collaborating with cross-functional teams to deliver scalable and
