@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react"
 import { cn } from "@/lib/utils"
 
-export default function BatCat() {
+export default function BatCat({ width = 96, height = 96 }: { width?: number, height?: number }) {
   const blinkRef = useRef<null | NodeJS.Timeout>(null)
   const [isBlinking, setIsBlinking] = useState(false)
   const [positions, setPositions] = useState({
@@ -125,7 +125,7 @@ export default function BatCat() {
   }, [])
 
   return (
-    <svg id="brand" width="96" height="96" viewBox="0 0 180 180">
+    <svg id="brand" width={width} height={height} viewBox="0 0 180 180">
       <defs>
         <clipPath id="backgroundClip">
           <circle cx="90" cy="90" r="90" />

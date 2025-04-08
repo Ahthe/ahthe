@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   ),
   title: {
     default: "Syed Ahthesham Ali - Software Engineer",
-    template: "%s |  Syed Ahthesham Ali",
+    template: "%s | Syed Ahthesham Ali",
   },
   description:
     "Syed Ahthesham Ali - Software Engineer at American Muslim Center, Dearborn, focused on building comprehensive applications and micro products.",
@@ -78,7 +78,6 @@ export default function RootLayout({
           <main className=" antialiased lg:max-w-2xl md:max-w-full mx-4 mb-40 flex flex-col md:flex-row  mt-2 sm:mt-8 lg:mx-auto">
             <section className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
               <Header />
-
               {children}
             </section>
           </main>
