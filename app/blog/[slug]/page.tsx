@@ -93,7 +93,7 @@ export default async function BlogDetailPage({ params }: Props) {
             url: `https://ahthe.vercel.app//blog/${blog.slug}`,
             author: {
               "@type": "Person",
-              name: "Syed Ahthesham Alir",
+              name: " Syed Ahthesham Ali",
             },
           }),
         }}

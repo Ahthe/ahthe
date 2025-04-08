@@ -7,7 +7,7 @@ import EducationSection from "@/components/education-section";
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Syed Ahthesham Alir",
+  name: " Syed Ahthesham Ali",
   jobTitle: "Software Engineer",
   worksFor: {
     "@type": "Organization",

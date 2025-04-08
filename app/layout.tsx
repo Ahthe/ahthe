@@ -14,17 +14,17 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_APP_URL || "https://ahthe.vercel.app/"
   ),
   title: {
-    default: "Syed Ahthesham Alir - Software Engineer",
-    template: "%s | Syed Ahthesham Alir",
+    default: "Syed Ahthesham Ali - Software Engineer",
+    template: "%s |  Syed Ahthesham Ali",
   },
   description:
-    "Syed Ahthesham Alir - Software Engineer at American Muslim Center, Dearborn, focused on building comprehensive applications and micro products.",
+    "Syed Ahthesham Ali - Software Engineer at American Muslim Center, Dearborn, focused on building comprehensive applications and micro products.",
   openGraph: {
-    title: "Syed Ahthesham Alir - Software Engineer",
+    title: "Syed Ahthesham Ali - Software Engineer",
     description:
       "Software Engineer at American Muslim Center, Dearborn, focused on building comprehensive applications and micro products.",
     url: "https://ahthe.vercel.app/",
-    siteName: "Syed Ahthesham Alir",
+    siteName: " Syed Ahthesham Ali",
     locale: "en_US",
     type: "website",
     images: [
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
         url: "https://ahthe.vercel.app//logo.svg",
         width: 1200,
         height: 630,
-        alt: "Syed Ahthesham Alir",
+        alt: " Syed Ahthesham Ali",
       },
     ],
   },
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: "Syed Ahthesham Alir",
+    title: " Syed Ahthesham Ali",
     card: "summary_large_image",
     site: "@onurhan1337",
     creator: "@onurhan1337",
