@@ -60,10 +60,12 @@ export const projectsData: Project[] = [
     Demo: "https://main.d2g4ycz7ogc8gz.amplifyapp.com/"
   },
   {
-    Title: "Dev Portfolio",
-    Desciption: "Highlight your work and acheivements using this minimal template.",
-    Stack: ["TypeScript", "JavaScript", "React", "Tailwind", "Framer Motion"],
-    Link: "https://github.com/prudhvideep/dev-portfolio"
+    Title: "Weave Wallet",
+    Desciption: "Weave Wallet (GrizzHacks 6 Hackathon Winners)- Exchange crypto locally",
+    Stack: ["C++", "Python", "TypeScript", "NextJS", "Tailwind", "Arduino RF", "Frontend", "Backend"],
+    Link: "https://devpost.com/software/wavewallet",
+    Demo: "https://weave-wallet-home.vercel.app/",
+    slug: "weavewallet" 
   },
   {
     Title: "quill",
@@ -71,6 +73,7 @@ export const projectsData: Project[] = [
     Stack: ["C++"],
     Link: "https://github.com/prudhvideep/quill"
   },
+
   {
     Title: "Wreaked It Down",
     Desciption: "Wreak It Down, an immersive canvas game with a Multiplayer mode where the action never stops!",

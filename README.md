@@ -1,6 +1,4 @@
-# onurhan.dev
-
-<a href="https://www.buymeacoffee.com/onurhan"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=onurhan&button_colour=FFDD00&font_colour=000000&font_family=Inter&outline_colour=000000&coffee_colour=ffffff" /></a>
+# Ahthesham Ali
 
 - **Icons**: [Lucide React](https://lucide.dev/icons/)
 - **Like**: [Upstash Claps](https://github.com/upstash/claps)
@@ -77,11 +75,4 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-# Inspiration
 
-- [@rauchg](https://twitter.com/emilkowalski_)
-- [@ademilter](https://twitter.com/ademilter)
-- [@leerob](https://twitter.com/leeerob)
-- [@shadcn](https://twitter.com/shadcn)
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
