@@ -12,12 +12,11 @@ const Projects = () => {
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
 
   const filterCategories = {
-    type: ["Data Science / Ai", "Frontend", "Backend", "Cli", "Gamedev"],
-    language: ["C++","Go", "Java", "Python", "TypeScript", "JavaScript", "Bash", "Sql"],
+    type: ["Machine Learning / AI", "Frontend", "Backend", "Cli", "Gamedev", "IOS"],
+    language: ["C++","Java", "Python", "C#", "Swift", "GO", "TypeScript", "JavaScript", "Lua", "Bash", "SQL"],
     technology: [
-      "GraphQl", "gRPC", "Tailwind", "Redis", "PostgreSQL", "React", "D3",
-      "Next", "Node", "Docker", "Kubernetes", "Terraform", "SpringBoot",
-      "Oracle", "MySql", "MongoDB", "TensorFlow", "Scikitlearn", "Firebase", "aws"
+      "AWS", "Google Cloud", "Firebase", "Langchain", "Xcode", "PostgreSQL", "React", "Tailwind",
+      "NextJS", "NodeJS", "Docker", "Kubernetes", "SpringBoot", "MySql", "MongoDB", "TensorFlow", "Scikitlearn",  "JupyterNotebook", "iOS Bootstrap", "Git", "Bash", "Unity"
     ]
   };
 
@@ -48,7 +47,9 @@ const Projects = () => {
               {Object.entries(filterCategories).map(([category, elements]) => (
                 <div key={category} className="w-full">
                   <h2 className="text-slate-500 dark:text-slate-400 m-0 pb-0 border-0">
-                    Filter by {category}:
+                  {/* <h2 className="text-slate-800 dark:text-slate-200 m-0 pb-0 border-0">
+                   */}
+                      Filter by {category}:
                   </h2>
                   <div className="mt-4 flex flex-wrap gap-4">
                     {elements.map((element) => (

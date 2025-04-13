@@ -1,0 +1,58 @@
+---
+title: "Wreak It Down: Building a Multiplayer Canvas Game with JavaScript"
+publishedAt: "2024-03-19" 
+summary: "Explore how I built Wreak It Down, a fast-paced multiplayer canvas shooting game using only HTML5 and vanilla JavaScript. Dive into the technical challenges and creative solutions behind this browser-based battle arena."
+---
+
+## The Genesis of Wreak It Down
+
+Have you ever wondered what happens when you combine the simplicity of HTML5 Canvas with the raw power of vanilla JavaScript? The answer is "Wreak It Down" - a fast-paced, action-packed multiplayer shooting game that runs entirely in your browser.
+
+The inspiration struck me during a weekend coding session when I wanted to create something fun that friends could play together regardless of their location. No downloads, no installations - just pure, accessible gameplay through a URL.
+
+## Game in Action
+
+<video 
+  className="w-full h-auto rounded-lg border border-zinc-200 dark:border-zinc-800 shadow-sm my-6 overflow-hidden aspect-video"
+  autoPlay 
+  loop 
+  muted
+  playsInline
+>
+  <source src="wreakit.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+## Core Game Mechanics
+
+What makes "Wreak It Down" engaging is the combination of simple controls and dynamic gameplay elements:
+
+- **Intuitive Movement**: Navigate your character with arrow keys, allowing for quick dodges and strategic positioning
+- **Projectile Combat**: Left-click to shoot, creating a satisfying offensive mechanic that requires both timing and aim
+- **Destructible Enemies**: Watch as enemies shrink upon impact before bursting into colorful particle explosions
+- **Power-Up System**: Collect various power-ups that enhance your abilities, adding layers of strategy to each match
+
+## The Multiplayer Challenge
+
+<video 
+  className="w-full h-auto rounded-lg border border-zinc-200 dark:border-zinc-800 shadow-sm my-6 overflow-hidden aspect-video"
+  autoPlay 
+  loop 
+  muted
+  playsInline
+>
+  <source src="witm.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+Adding multiplayer functionality to a canvas game presented unique challenges. Unlike traditional single-player experiences, multiplayer requires:
+
+1. **Real-time Synchronization**: Ensuring all players see the same game state simultaneously
+2. **Latency Management**: Accounting for varying connection speeds between players
+3. **Collision Detection Across Clients**: Accurately determining hits when players are on different machines
+
+The solution involved implementing a lightweight client-server architecture that prioritizes essential data transmission while handling predictions client-side. This creates a smooth experience even when network conditions aren't ideal.
+
+## Technical Implementation Highlights
+
+Building "Wreak It Down" with nothing but vanilla JavaScript meant creating everything from scratch:

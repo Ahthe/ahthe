@@ -21,16 +21,19 @@ export default function Work() {
                 American Muslim Center,  Dearborn
               </h2>
               <time className="text-neutral-600 dark:text-neutral-400 text-sm">
-                Software Engineer, march 2024 — present
+                Software Engineer, MAR 2024 — PRESENT
               </time>
             </header>
             <p>
-              At American Muslim Center, Dearborn, I am part of the Partner Solution Development team,
+              At the American Muslim Center, Dearborn, I work with a team of developers to build applications that 
+              adress community challenges  using Next.js, JavaScript, MongoDB, and various APIs. My role focuses on coming up with creative 
+              ideas and developing these applications alongside my team.
+              {/* At American Muslim Center, Dearborn, I am part of the Partner Solution Development team,
               where I contribute to the development of B2B SaaS solutions
               tailored to our clients&apos; needs. My role involves
               collaborating with cross-functional teams to deliver scalable and
               efficient software solutions that help businesses grow and
-              optimize their workflows.
+              optimize their workflows. */}
             </p>
             <ul>
               <li>
@@ -58,15 +61,15 @@ export default function Work() {
                 Headstarter AI
               </h2>
               <time className="text-neutral-600 dark:text-neutral-400 text-sm">
-                Software Engineer Fellow, july 2024 — october 2024
+                Software Engineer Fellow, JULY 2024 — OCT 2024
               </time>
             </header>
             <p>
               I joined{" "}
-              <a href="https://utilify.xyz" rel="noopener noreferrer">
+              <a href="https://headstarter.co/" rel="noopener noreferrer">
                 Headstarter AI
               </a>{" "}
-              to build intuitive interfaces and pages for users and brands.
+              , a fellowship with over 3,000 participants, my team and I were the winners. As team lead from July to October 2024, We developed several applications such as using Python and Next.js that reached over 8,000 users.
             </p>
             <ul>
               <li>
@@ -97,15 +100,15 @@ export default function Work() {
               <h2 className="font-medium text-xl mb-1 tracking-tighter">
                 University of Mount Union, Alliance, OH  </h2>
               <time className="text-neutral-600 dark:text-neutral-400 text-sm">
-                Software Engineer and Math Tutor, january 2024 — december 2024
+                Software Engineer and Math Tutor, JAN 2024 — DEC 2024
               </time>
             </header>
             <p>
-              I joined{" "}
+              {/* I joined{" "}
               <a href="https://utilify.xyz" rel="noopener noreferrer">
                 University of Mount Union
-              </a>{" "}
-              to build intuitive interfaces and pages for users and brands.
+              </a>{" "} */}
+              Helped 90% of students improve their grades from 55% to 85-90% through tutoring in programming and math, and by debugging code in JavaScript, Python, C#, and SQL.
             </p>
             <ul>
               <li>
@@ -136,24 +139,22 @@ export default function Work() {
           <article>
             <header>
               <h2 className="font-medium text-xl mb-1 tracking-tighter">
-                ACBSP in VR Technologies-Startup
+                ACBSP in VR Technologies - Startup & Research
               </h2>
               <time className="text-neutral-600 dark:text-neutral-400 text-sm">
-                Software Engineer, september 2022 — april 2023
+                Software Engineer, SEP 2022 — APR 2023
               </time>
             </header>
             <p>
-              I joined{" "}
-              <a href="https://utilify.xyz" rel="noopener noreferrer">
-              ACBSP in VR Technologies
-              </a>{" "}
-              to build intuitive interfaces and pages for users and brands.
-            </p>
+              {/* I joined{" "}
+              <a href="" rel="noopener noreferrer">
+              ACBSP in VR Technologies (Advance Congnative Behavioral Solutions & Pychology )
+              </a>{" "} */}
+              At the startup, I contributed to a research study by designing interfaces and developing a VR action game in Unity using C# and the Oculus SDK.            </p>
             <ul>
               <li>
               Tasked with creating a VR action game in Unity to study psychological behavior, improving research studies.
-              </li>
-              <li>Develop projects from design to deployment leading 4+ engineering fellows using MVC design patterns.</li>
+              </li>              
               <li>
               Constructed a VR action game in Unity using C# and Oculus SDK, targeting the prefrontal cortex to reduce
               user stress and anxiety by 30%, through strategic object dismemberment scenarios.

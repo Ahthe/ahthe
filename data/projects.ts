@@ -72,9 +72,18 @@ export const projectsData: Project[] = [
     Link: "https://github.com/prudhvideep/quill"
   },
   {
-    Title: "Real Vision",
-    Desciption: "A CNN based classifier to flag Ai generated images trained on CIFAKE dataset.",
-    Stack: ["Python", "PyTorch", "Data Science / Ai"],
-    Link: "https://github.com/prudhvideep/RealVision"
+    Title: "Wreaked It Down",
+    Desciption: "Wreak It Down, an immersive canvas game with a Multiplayer mode where the action never stops!",
+    Stack: ["JavaScript", "ExpressJS", "Socket.io", "Gamedev"],
+    Link: "https://github.com/Ahthe/Wreak-IT-Down--Multiplayer",
+    Demo: "https://ahthe.github.io/Wreak-IT-Down--Multiplayer/",
+    slug: "wreakeditdown" 
+  },
+  {
+    Title: "AI Fable Trail",
+    Desciption: "An AI-powered choose-your-own-adventure game using OpenAI's GPT and Apache Cassandra to generate storylines based on your choices.",
+    Stack: ["Python", "Langchain", "Apache Cassandra's database", "Machine Learning / AI", "Gamedev"],
+    Link: "https://github.com/Ahthe/AI-FableTrail",
+    slug: "aifable" 
   }
 ];
