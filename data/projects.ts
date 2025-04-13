@@ -88,5 +88,28 @@ export const projectsData: Project[] = [
     Stack: ["Python", "Langchain", "Apache Cassandra's database", "Machine Learning / AI", "Gamedev"],
     Link: "https://github.com/Ahthe/AI-FableTrail",
     slug: "aifable" 
+  },
+  {
+    Title: "Spring Boot User Authentication System",
+    Desciption: "This is a simple web application built with Spring MVC and secured using Spring Security.",
+    Stack: ["Java", "SpringBoot", "Backend"],
+    Link: "https://github.com/Ahthe/Spring-Boot-App-with-User-Authentication"
+    // slug: "aifable" 
+  },
+  {
+    Title: "Algorithm Visualizer",
+    Desciption: "Used JavaFX to visualize various types of sorting and path-finding algorithms.",
+    Stack: ["Java", "Backend"],
+    Link: "https://github.com/Ahthe/Algorithm-Visualizer-Java"
+    // slug: "aifable" 
+  },
+  {
+    Title: "Pacman Gmae",
+    Desciption: "Pacman game built with Java AWT/Swing graphics library.",
+    Stack: ["Java", "Gamedev"],
+    Link: "https://github.com/Ahthe/Pacman_Game_Java"
+    // slug: "aifable" 
   }
+  
+  
 ];
