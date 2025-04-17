@@ -5,8 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Container from "./shared/container";
-import { ModeToggle } from "./ui/theme-toggle";
 import BatCat from "./ui/batcat";
+import { MovingElement } from "./ui/moving-element";
+import { AnimatedText } from "./ui/animated-text";
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
+import { Moon, Sun } from "lucide-react";
 
 const NAV_ITEMS = {
   about: "/",
@@ -17,6 +21,18 @@ const NAV_ITEMS = {
 
 export const Header = () => {
   const pathname = usePathname();
+  // Add state to prevent hydration mismatch
+  const [isMounted, setIsMounted] = useState(false);
+  const { resolvedTheme, setTheme } = useTheme();
+
+  // Only show client-side components after hydration
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const toggleTheme = () => {
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
+  };
 
   return (
     <header>
@@ -44,19 +60,27 @@ export const Header = () => {
           <div className="flex flex-row items-center justify-between sm:justify-end w-full mt-8 sm:mt-4 mb-0 sm:mb-4 tracking-tight">
             <div className="inline-flex items-center">
               {Object.entries(NAV_ITEMS).map(([name, href]) => (
-                <Link
+                <AnimatedText 
                   key={name}
                   href={href}
-                  className={cn(
-                    pathname === href ? "font-semibold" : "font-normal",
-                    "transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative py-1 px-2"
-                  )}
+                  // className="text-sm"
+                  isActive={pathname === href}
                 >
                   {name}
-                </Link>
+                </AnimatedText>
               ))}
             </div>
-            <ModeToggle />
+            {isMounted && (
+              <MovingElement
+                className="rounded-full p-[10px] mb-1"
+                change={toggleTheme}
+                ariaLabel={`Switch to ${
+                  resolvedTheme === "dark" ? "light" : "dark"
+                } mode`}
+              >
+                {resolvedTheme === "dark" ? <Moon size={20} /> : <Sun size={20} />}
+              </MovingElement>
+            )}
           </div>
         </nav>
       </Container>

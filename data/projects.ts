@@ -11,12 +11,20 @@ export interface Project {
 // Projects data
 export const projectsData: Project[] = [
   {
-    Title: "Asteroids",
-    Desciption: "A retro asteroids game written in C to introduce Raylib in Game dev reading group at ASU.",
-    Stack: ["C++", "Wasm", "Raylib", "Gamedev"],
-    Link: "https://github.com/prudhvideep/asteroids",
-    Demo: "https://prudhvideep.github.io/asteroids/asteroids.html",
-    slug: "tradewise"
+    Title: "Your Eyes",
+    Desciption: "An innovative app designed to help visually impaired individuals navigate their world with confidence.",
+    Stack: ["TypeScript", "NextJS", "YOLOv7", "GPT-4 Vision", "ONNX", "Tailwind", "Frontend", "Backend"],
+    Link: "https://github.com/Ahthe/YourEyes",
+    Demo: "https://visionary-path.vercel.app/",
+    slug: "youreyes"
+  },
+  {
+    Title: "Watch CPR",
+    Desciption: "An innovative app designed to help visually impaired individuals navigate their world with confidence.",
+    Stack: ["TypeScript", "NextJS", "YOLOv7", "GPT-4 Vision", "ONNX", "Tailwind", "Frontend", "Backend"],
+    Link: "https://github.com/Ahthe/YourEyes",
+    Demo: "https://visionary-path.vercel.app/",
+    slug: "youreyes"
   },
   {
     Title: "fnd",
@@ -60,6 +68,13 @@ export const projectsData: Project[] = [
     Demo: "https://main.d2g4ycz7ogc8gz.amplifyapp.com/"
   },
   {
+    Title: "Brain Tumor Prediction ML",
+    Desciption: "This project focuses on the classification of brain tumors from MRI scans using advanced deep learning techniques.",
+    Stack: ["Python", "TensorFlow", "Keras", "Xception", "Streamlit", "Machine Learning / AI"],
+    Link: "https://github.com/Ahthe/Brain_Tumor_Prediction-ML",
+    slug: "wreakeditdown" 
+  },
+  {
     Title: "Weave Wallet",
     Desciption: "Weave Wallet (GrizzHacks 6 Hackathon Winners)- Exchange crypto locally",
     Stack: ["C++", "Python", "TypeScript", "NextJS", "Tailwind", "Arduino RF", "Frontend", "Backend"],
@@ -81,6 +96,20 @@ export const projectsData: Project[] = [
     Link: "https://github.com/Ahthe/Wreak-IT-Down--Multiplayer",
     Demo: "https://ahthe.github.io/Wreak-IT-Down--Multiplayer/",
     slug: "wreakeditdown" 
+  },
+  {
+    Title: "Rate My Resume",
+    Desciption: "Build a tool that helps users evaluate their resumes and improve chances with potential employees",
+    Stack: ["TypeScript", "NextJS", "Openai-API"],
+    Link: "https://github.com/Ahthe/Wreak-IT-Down--Multiplayer",
+    Demo: "https://ahthe.github.io/Wreak-IT-Down--Multiplayer/",
+    slug: "wreakeditdown" 
+  },
+  {
+    Title: "Pantry Management System",
+    Desciption: "Pantry Management made easier",
+    Stack: ["JavaScript", "NextJS", "Firebase"],
+    Link: "https://github.com/Ahthe/pantry-management/tree/main"
   },
   {
     Title: "AI Fable Trail",
