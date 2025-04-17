@@ -24,8 +24,8 @@ dependencies:
     specifier: ^1.4.1
     version: 1.4.1(next@15.0.3)(react@18.3.1)
   '@vercel/speed-insights':
-    specifier: ^1.1.0
-    version: 1.1.0(next@15.0.3)(react@18.3.1)
+    specifier: ^1.2.0
+    version: 1.2.0(next@15.0.3)(react@18.3.1)
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
@@ -1263,7 +1263,7 @@ packages:
   /@tailwindcss/typography@0.5.15(tailwindcss@3.4.15):
     resolution: {integrity: sha512-AqhlCXl+8grUz8uqExv5OTtgpjuVIwFTSXTrh8y9/pw6q2ek7fJ+Y8ZEVw7EB2DCcuCOtEjf9w3+J3rzts01uA==}
     peerDependencies:
-      tailwindcss: '>=3.0.0 || American Muslim Center, Dearborns || >=4.0.0-alpha.20'
+      tailwindcss: '>=3.0.0 || insiders || >=4.0.0-alpha.20'
     dependencies:
       lodash.castarray: 4.4.0
       lodash.isplainobject: 4.0.6
@@ -1537,8 +1537,8 @@ packages:
       react: 18.3.1
     dev: false
 
-  /@vercel/speed-insights@1.1.0(next@15.0.3)(react@18.3.1):
-    resolution: {integrity: sha512-rAXxuhhO4mlRGC9noa5F7HLMtGg8YF1zAN6Pjd1Ny4pII4cerhtwSG4vympbCl+pWkH7nBS9kVXRD4FAn54dlg==}
+  /@vercel/speed-insights@1.2.0(next@15.0.3)(react@18.3.1):
+    resolution: {integrity: sha512-y9GVzrUJ2xmgtQlzFP2KhVRoCglwfRQgjyfY607aU0hh0Un6d0OUyrJkjuAlsV18qR4zfoFPs/BiIj9YDS6Wzw==}
     requiresBuild: true
     peerDependencies:
       '@sveltejs/kit': ^1 || ^2
@@ -4668,7 +4668,7 @@ packages:
   /tailwindcss-animate@1.0.7(tailwindcss@3.4.15):
     resolution: {integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==}
     peerDependencies:
-      tailwindcss: '>=3.0.0 || American Muslim Center, Dearborns'
+      tailwindcss: '>=3.0.0 || insiders'
     dependencies:
       tailwindcss: 3.4.15
     dev: false
@@ -5084,7 +5084,7 @@ packages:
       '@radix-ui/react-slot': 1.1.0(@types/react@18.3.12)(react@18.3.1)
       '@upstash/claps': 1.0.0-beta.4
       '@vercel/analytics': 1.4.1(next@15.0.3)(react@18.3.1)
-      '@vercel/speed-insights': 1.1.0(next@15.0.3)(react@18.3.1)
+      '@vercel/speed-insights': 1.2.0(next@15.0.3)(react@18.3.1)
       class-variance-authority: 0.7.0
       clsx: 2.1.1
       framer-motion: 11.11.17(react-dom@18.3.1)(react@18.3.1)
