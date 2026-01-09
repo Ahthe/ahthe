@@ -8,10 +8,10 @@ const structuredData = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: " Syed Ahthesham Ali",
-  jobTitle: "Software Engineer",
+  jobTitle: "AI / Software Engineer",
   worksFor: {
     "@type": "Organization",
-    name: "American Muslim Center, Dearborn",
+    name: "Captain Jays Fish & Chicken, Dearborn",
   },
   url: "https://ahthe.vercel.app/",
   sameAs: [
@@ -24,9 +24,9 @@ const structuredData = {
 export default function About() {
   const paragraphs = [
     <>
-      As a Software Engineer at{" "}
+      As a AI / Software Engineer at{" "}
       <span className="font-medium decoration-wavy underline decoration-from-font text-emerald-950 decoration-emerald-500 dark:text-emerald-50 dark:decoration-emerald-400 tracking-tight">
-        AMC, Dearborn
+        Captain Jays Fish & Chicken
       </span>
       , I focus on developing comprehensive applications that deliver value
       across various aspects of software. My expertise bridges the gap between
