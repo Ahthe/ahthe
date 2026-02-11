@@ -1,4 +1,4 @@
-## Hi there! ![wave](https://emojis.slackmojis.com/emojis/images/1536351075/4594/blob-wave.gif)
+## Hi there! <img src="https://emojis.slackmojis.com/emojis/images/1536351075/4594/blob-wave.gif" width="24" />
 
 I’m **Ahthesham**, an AI/Software Engineer based in the **United States**. I like building clean, fast software applications while keeping things simple and efficient.
 
