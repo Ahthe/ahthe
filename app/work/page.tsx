@@ -19,36 +19,35 @@ export default function Work() {
           <article>
             <header>
               <h2 className="font-medium text-xl mb-1 tracking-tighter">
-                Captain Jays Fish & Chicken
+                Captain Jays Fish & Chicken, Dearborn - MI
               </h2>
               <time className="text-neutral-600 dark:text-neutral-400 text-sm">
-                AI /Software Engineer, Jan 2025 — PRESENT
+                AI/Software Engineer, January 2025 — PRESENT
               </time>
             </header>
             <p>
-              Leveraging expertise in AI and software engineering to develop comprehensive applications that optimize business operations
-              Bridging the gap between design and backend functionality to deliver seamless, value-driven user experiences
+              Engineered production Al systems deployed across 27+ restaurant locations, driving measurable operational efficiency and cost reduction through voice automation, machine learning-based screening, and intelligent compliance tools
             </p>
             <ul>
               <li>
-                Architected a fully automated Voice AI ordering system for 28+ locations, engineering the ”Virtual Cashier”
-                middleware using Python (FastAPI) and AWS ECS to bridge GPT-4o and NCR Aloha POS, enabling
-                real-time order injection with sub-second latency and high availability via automated fallback protocols
+                Projected $1.2M+ in annual labor savings by architecting an Al Virtual Cashier system using Python FastAPI,
+                AWS, Twilio Voice API, WebSockets, Redis, and GPT-5 that integrates with NCR Aloha POS to automate phone
+                order-taking across 27+ restaurants, reducing staffing requirements by 50% per shift
               </li>
 
               <li>
-                Built an autonomous AI Voice Interview Platform using Vapi AI, React, and Firebase to screen hundreds of
-                candidates, integrating Google Gemini for automated scoring to reduce manager screening time by 80%
+                Reduced candidate screening time by 80% by building an Al Voice Interview platform (React, JavaScript, Firebase,
+                Vapi Al) using Gemini to autonomously interview and score hundreds of applicants, streamlining hiring workflows
               </li>
 
               <li>
-                Developed a self-guided onboarding web app using Astro, React, and TypeScript, reducing new hire
-                time-to-productivity from 3 weeks to 1 week by delivering AI-generated learning roadmaps
+                Accelerated new hire productivity by 67% (from 3 weeks to 1 week) by developing a self guided onboarding web
+                app with React, TypeScript, Nginx, and AWS that generates personalized learning roadmaps based on role
               </li>
 
               <li>
-                Built an AI Digital Store QA System replacing paper checklists across 29 locations, driving compliance from 3% to
-                95% and boosting food quality in 11 stores via photo verification and automated MS Teams reporting
+                Increased compliance from 3% to 95% across all locations by replacing manual checklists with an Al-driven QA
+                system featuring automated photo verification and real-time reporting via MS Teams integration
               </li>
 
             </ul>
@@ -58,50 +57,32 @@ export default function Work() {
           <article>
             <header>
               <h2 className="font-medium text-xl mb-1 tracking-tighter">
-                American Muslim Center,  Dearborn
+                American Muslim Center, Dearborn - MI
               </h2>
               <time className="text-neutral-600 dark:text-neutral-400 text-sm">
-                Software Engineer, MAR 2024 — Jan 2025
+                Software Engineer - Contract, MARCH 2024 — January 2025
               </time>
             </header>
             <p>
               At the American Muslim Center, Dearborn, I work with a team of developers to build applications that
               adress community challenges  using Next.js, JavaScript, MongoDB, and various APIs. My role focuses on coming up with creative
               ideas and developing these applications alongside my team.
-              {/* At American Muslim Center, Dearborn, I am part of the Partner Solution Development team,
-              where I contribute to the development of B2B SaaS solutions
-              tailored to our clients&apos; needs. My role involves
-              collaborating with cross-functional teams to deliver scalable and
-              efficient software solutions that help businesses grow and
-              optimize their workflows. */}
             </p>
             <ul>
               <li>
-                Expanded community reach from 800+ to potentially 1000+ members by developing an event booking website
-                using NextJS, MongoDB, Clerk, and StripeAPI, streamlining registration and addressing social health concerns
+                Engineered a digital ecosystem for 1,000+ members using React, TypeScript, MongoDB, and Stripe, delivering an
+                Event Platform and gamified Educational Portal, managing the full SDLC from design to deployment
               </li>
-              <li>
-                Created an interactive Quiz app with NextJS, Sanity.io, and MongoDB for summer school children and
-                implemented engaging features such as leaderboards, increasing student engagement through gamified education
-              </li>
-              {/* <li>
-                Implementing efficient and maintainable codebases using modern
-                software development practices.
-              </li>
-              <li>
-                Actively improving existing systems by identifying bottlenecks
-                and implementing optimizations.
-              </li> */}
             </ul>
           </article>
 
           <article>
             <header>
               <h2 className="font-medium text-xl mb-1 tracking-tighter">
-                Headstarter AI
+                Headstarter AI, Remote/New York
               </h2>
               <time className="text-neutral-600 dark:text-neutral-400 text-sm">
-                Software Engineer Fellow, JULY 2024 — OCT 2024
+                Software Engineer Fellow, July 2024 — October 2024
               </time>
             </header>
             <p>
@@ -113,34 +94,23 @@ export default function Work() {
             </p>
             <ul>
               <li>
-                Built 5+ AI apps and APIs using Python, NextJS, OpenAI, Pinecone, StripeAPI with as seen by 8000+ users.
+                Built and deployed 5+ Al-powered applications using React, Python, OpenAI API, and AWS, collectively serving
+                8,000+ users with features including real-time chat, voice interfaces, and intelligent automation
               </li>
-              <li>Develop projects from design to deployment leading 4+ engineering fellows using MVC design patterns.</li>
+              <li>Led engineering teams of 4+ fellows in developing production-grade projects using MVC architecture, Agile
+                methodologies, CI/CD pipelines, and microservice design patterns</li>
               <li>
                 Coached by Amazon, Bloomberg and Capital One engineers on Agile, CI/CD, Git, and microservice patterns.
               </li>
-              {/* <li>
-                Stayed abreast of emerging trends and best practices in
-                front-end development, continually honing skills and exploring
-                innovative solutions to technical challenges.
-              </li>
-              <li>
-                Developed the{" "}
-                <a href="https://app.utilify.xyz/ucl" rel="noopener noreferrer">
-                  Campaign page
-                </a>{" "}
-                for the souvenir NFT distributed for the UCL final in
-                partnership with Turkish Airlines.
-              </li> */}
             </ul>
           </article>
 
           <article>
             <header>
               <h2 className="font-medium text-xl mb-1 tracking-tighter">
-                University of Mount Union, Alliance, OH  </h2>
+                University of Mount Union, Alliance - OH  </h2>
               <time className="text-neutral-600 dark:text-neutral-400 text-sm">
-                Software Engineer and Math Tutor, JAN 2024 — DEC 2024
+                Computer Science and Math Tutor, December 2020 — December 2023
               </time>
             </header>
             <p>
@@ -152,37 +122,19 @@ export default function Work() {
             </p>
             <ul>
               <li>
-                Improved grades of 90% of tutored students from failing grades of 55% to high achievers 85-90% within a semester
-                by tutoring in Systems Programming, Data Structures, Algorithms, and Mathematics.
+                Raised final grades for 90% of failing students by an average of 35% within one semester, by teaching core data
+                structures, algorithms, math concepts and debugging techniques across Java, Python, C++, Go, and SQL
               </li>
-              <li>Analyzed and debugged code in JavaScript, Python, C#, and SQL using IDE tools and debugging techniques,
-                while teaching key math concepts such as calculus, linear algebra, and statistics resulting in a 35% grade increase.</li>
-              {/* <li>
-              Coached by Amazon, Bloomberg and Capital One engineers on Agile, CI/CD, Git, and microservice patterns.
-              </li> */}
-              {/* <li>
-                Stayed abreast of emerging trends and best practices in
-                front-end development, continually honing skills and exploring
-                innovative solutions to technical challenges.
-              </li>
-              <li>
-                Developed the{" "}
-                <a href="https://app.utilify.xyz/ucl" rel="noopener noreferrer">
-                  Campaign page
-                </a>{" "}
-                for the souvenir NFT distributed for the UCL final in
-                partnership with Turkish Airlines.
-              </li> */}
             </ul>
           </article>
 
           <article>
             <header>
               <h2 className="font-medium text-xl mb-1 tracking-tighter">
-                ACBSP in VR Technologies - Startup & Research
+                ACBSP in VR Technologies - Startup & Research, Alliance - Ohio
               </h2>
               <time className="text-neutral-600 dark:text-neutral-400 text-sm">
-                Software Engineer, SEP 2022 — APR 2023
+                Research Software Engineer, September 2022 — September 2023
               </time>
             </header>
             <p>
@@ -193,25 +145,9 @@ export default function Work() {
               At the startup, I contributed to a research study by designing interfaces and developing a VR action game in Unity using C# and the Oculus SDK.            </p>
             <ul>
               <li>
-                Tasked with creating a VR action game in Unity to study psychological behavior, improving research studies.
+                Built a VR action game in Unity using C# and Oculus SDK to improve psychological research studies, targeting
+                the prefrontal cortex to reduce user stress and anxiety by 30% via strategic object dismemberment scenarios
               </li>
-              <li>
-                Constructed a VR action game in Unity using C# and Oculus SDK, targeting the prefrontal cortex to reduce
-                user stress and anxiety by 30%, through strategic object dismemberment scenarios.
-              </li>
-              {/* <li>
-                Stayed abreast of emerging trends and best practices in
-                front-end development, continually honing skills and exploring
-                innovative solutions to technical challenges.
-              </li>
-              <li>
-                Developed the{" "}
-                <a href="https://app.utilify.xyz/ucl" rel="noopener noreferrer">
-                  Campaign page
-                </a>{" "}
-                for the souvenir NFT distributed for the UCL final in
-                partnership with Turkish Airlines.
-              </li> */}
             </ul>
           </article>
 
