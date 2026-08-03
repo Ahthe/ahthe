@@ -22,7 +22,7 @@ export default function Work() {
                 Captain Jays Fish & Chicken, Dearborn - MI
               </h2>
               <time className="text-neutral-600 dark:text-neutral-400 text-sm">
-                AI/Software Engineer, January 2025 — PRESENT
+                Software Engineer (Forward Deployed Engineer), January 2025 — PRESENT
               </time>
             </header>
             <p>
@@ -30,24 +30,31 @@ export default function Work() {
             </p>
             <ul>
               <li>
-                Projected $1.2M+ in annual labor savings by architecting an Al Virtual Cashier system using Python FastAPI,
-                AWS, Twilio Voice API, WebSockets, Redis, and GPT-5 that integrates with NCR Aloha POS to automate phone
-                order-taking across 27+ restaurants, reducing staffing requirements by 50% per shift
+                Identified phone-order abandonment as the largest revenue leak during peak promotions, then led vendor evaluation
+                and the 27-location rollout of a Voice AI phone-agent platform running 50 concurrent agents, generating an
+                estimated $865K in annual labor savings
               </li>
 
               <li>
-                Reduced candidate screening time by 80% by building an Al Voice Interview platform (React, JavaScript, Firebase,
-                Vapi Al) using Gemini to autonomously interview and score hundreds of applicants, streamlining hiring workflows
+                Drove cross-functional delivery across three external engineering teams during a 9-month NCR Aloha POS
+                integration, tracing JSON payloads to resolve item-ID and API errors causing zero-priced and missing menu items            
               </li>
 
               <li>
-                Accelerated new hire productivity by 67% (from 3 weeks to 1 week) by developing a self guided onboarding web
-                app with React, TypeScript, Nginx, and AWS that generates personalized learning roadmaps based on role
+                Rebuilt the voice agent’s prompt and conversation flow with the vendor’s senior engineer to eliminate hallucinated
+                orders on the chain’s highest-volume weekly promotion, raising order accuracy to 95% company-wide
               </li>
 
               <li>
-                Increased compliance from 3% to 95% across all locations by replacing manual checklists with an Al-driven QA
-                system featuring automated photo verification and real-time reporting via MS Teams integration
+                 Reduced new-hire ramp time from 3 weeks to 1 week by building Captain Jay’s University, an LMS in Next.js,
+                TypeScript, FastAPI, PostgreSQL, and Docker, now deployed company-wide to all 315 employees across 27
+                locations, serving 260+ lessons, server-scored certification exams, and manager analytics
+              </li>
+
+              <li>
+                Redesigned store audits through stakeholder interviews with district managers and staff, then built an AI-assisted
+                platform that raised normalized scores from 48–60% to 73–82% for 27 locations using Next.js, TypeScript, FastAPI,
+                PostgreSQL, Cloudflare R2, GPT-4o Vision for photo verification, and Power Automate for Teams  
               </li>
 
             </ul>
@@ -94,13 +101,11 @@ export default function Work() {
             </p>
             <ul>
               <li>
-                Built and deployed 5+ Al-powered applications using React, Python, OpenAI API, and AWS, collectively serving
-                8,000+ users with features including real-time chat, voice interfaces, and intelligent automation
+                Developed and deployed 5+ AI-powered applications using React, Python, OpenAI API, DynamoDB, and AWS,
+                serving 8,000+ users with real-time chat, voice interfaces, and intelligent automation
               </li>
-              <li>Led engineering teams of 4+ fellows in developing production-grade projects using MVC architecture, Agile
-                methodologies, CI/CD pipelines, and microservice design patterns</li>
               <li>
-                Coached by Amazon, Bloomberg and Capital One engineers on Agile, CI/CD, Git, and microservice patterns.
+                Led 4 engineers to deliver production-grade applications using MVC, Agile, CI/CD, and microservices
               </li>
             </ul>
           </article>
@@ -122,8 +127,8 @@ export default function Work() {
             </p>
             <ul>
               <li>
-                Raised final grades for 90% of failing students by an average of 35% within one semester, by teaching core data
-                structures, algorithms, math concepts and debugging techniques across Java, Python, C++, Go, and SQL
+                Raised final grades by an average of 35% for 90% of initially failing students by tutoring 12+ students in data
+                structures, algorithms, mathematics, and debugging across Java, Python, C#, Swift, and SQL
               </li>
             </ul>
           </article>
@@ -145,8 +150,8 @@ export default function Work() {
               At the startup, I contributed to a research study by designing interfaces and developing a VR action game in Unity using C# and the Oculus SDK.            </p>
             <ul>
               <li>
-                Built a VR action game in Unity using C# and Oculus SDK to improve psychological research studies, targeting
-                the prefrontal cortex to reduce user stress and anxiety by 30% via strategic object dismemberment scenarios
+                Built a VR action game in Unity using C# and Oculus SDK for psychological research, designing interactive
+                object-dismemberment mechanics to stimulate prefrontal cortex engagement and reduce stress and anxiety by 30%
               </li>
             </ul>
           </article>
