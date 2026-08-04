@@ -52,14 +52,7 @@ export default function About() {
         Hi, I&apos;m Ahthesham.
       </p>
       {paragraphs.map((paragraph, index) => (
-        <div
-          key={index}
-          style={
-            { "--stagger": index } as React.CSSProperties & {
-              [key: string]: number;
-            }
-          }
-        >
+        <div key={index}>
           <p className={index === paragraphs.length - 1 ? "mb-8" : ""}>
             {paragraph}
           </p>

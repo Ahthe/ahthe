@@ -3,7 +3,7 @@ import Container from "@/components/shared/container";
 
 export default function Work() {
   return (
-    <Container size="large">
+    <Container size="large" className="animate-enter">
       <main className="prose prose-neutral dark:prose-invert">
         <header>
           <p>

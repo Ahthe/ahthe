@@ -36,7 +36,7 @@ const Projects = () => {
   const isTagHighlighted = (tag: string) => activeFilter === tag;
 
   return (
-    <Container size="large">
+    <Container size="large" className="animate-enter">
       <main className="prose prose-neutral dark:prose-invert">
         <div className="mt-6 w-full max-w-3xl">
           <p className="font-medium">

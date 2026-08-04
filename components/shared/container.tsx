@@ -26,7 +26,15 @@ export default function Container({
   }
 
   return (
-    <div className={`mx-auto px-4 sm:px-6 lg:px-8 ${width} ${className}`}>
+    // Joined rather than interpolated: `${className}` emits a literal
+    // "undefined" class when the prop is omitted. Deliberately not cn() —
+    // this component is used inside client pages, and pulling in tailwind-merge
+    // added ~38 kB to the /projects bundle.
+    <div
+      className={["mx-auto px-4 sm:px-6 lg:px-8", width, className]
+        .filter(Boolean)
+        .join(" ")}
+    >
       {children}
     </div>
   );

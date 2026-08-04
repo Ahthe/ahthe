@@ -13,7 +13,7 @@ export default function Blog() {
   const allBlogs = getBlogPosts();
 
   return (
-    <Container size="large">
+    <Container size="large" className="animate-enter">
       <Suspense fallback={<div>Loading...</div>}>
         <Pagination allBlogs={allBlogs} />
       </Suspense>

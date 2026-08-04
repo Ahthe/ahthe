@@ -1,354 +1,195 @@
-// "use client"
+"use client";
 
-// import { useState, useEffect, useCallback, useRef } from "react"
-// import { cn } from "@/lib/utils"
+import { useEffect, useRef, useState } from "react";
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+  useTransform,
+} from "framer-motion";
+import { cn } from "@/lib/utils";
 
-// export default function BatCat({ width = 96, height = 96 }: { width?: number, height?: number }) {
-//   const blinkRef = useRef<null | NodeJS.Timeout>(null)
-//   const [isBlinking, setIsBlinking] = useState(false)
-//   const [positions, setPositions] = useState({
-//     head: {
-//       x: 90,
-//       y: 110,
-//     },
-//     leftEye: {
-//       x: 78,
-//       y: 112,
-//     },
-//     rightEye: {
-//       x: 104,
-//       y: 112,
-//     },
-//     leftEar: {
-//       x: 60,
-//     },
-//     rightEar: {
-//       x: 120,
-//     },
-//   })
+/** Rest geometry, in viewBox units. */
+const HEAD = { x: 90, y: 110 };
+const LEFT_EYE = { x: 77.5, y: 112 };
+const RIGHT_EYE = { x: 103.5, y: 112 };
+const LEFT_EAR_X = 60;
+const RIGHT_EAR_X = 120;
 
-//   const handleMove = useCallback((clientX: number, clientY: number) => {
-//     const svgElement = document.getElementById("brand")
-//     if (!svgElement) return
-//     const rect = svgElement.getBoundingClientRect()
-//     const svgCenterX = rect.left + rect.width / 2
-//     const svgCenterY = rect.top + rect.height / 2
-//     const offsetX = clientX - svgCenterX
-//     const offsetY = clientY - svgCenterY
+/** How far each layer travels at full cursor distance. */
+const HEAD_TRAVEL = 6;
+const EYE_TRAVEL = 20;
+const EAR_TRAVEL = 3;
 
-//     // head
-//     const maxHeadOffset = 6
-//     const headDistance = Math.sqrt(offsetX * offsetX + offsetY * offsetY)
-//     const clampedHeadDistance = Math.min(headDistance, maxHeadOffset)
-//     const headAngle = Math.atan2(offsetY, offsetX)
-//     const headMoveX = clampedHeadDistance * Math.cos(headAngle)
-//     const headMoveY = clampedHeadDistance * Math.sin(headAngle)
+/** Cursor distance at which tracking saturates. */
+const MAX_DISTANCE = 100;
 
-//     // eyes
-//     const maxEyesOffset = 20
-//     const eyesDistance = headDistance
-//     const eyesAngle = headAngle
-//     const clampedEyesDistance = Math.min(eyesDistance, maxEyesOffset)
-//     const eyeMoveX = clampedEyesDistance * Math.cos(eyesAngle)
-//     const eyeMoveY = clampedEyesDistance * Math.sin(eyesAngle)
+/**
+ * Each layer gets its own spring. Damping is set at roughly 2·√(k·m) —
+ * critical damping — so nothing overshoots or bounces. The sense of life comes
+ * from the *lag between layers*: eyes lead, head trails, ears trail furthest.
+ */
+const EYE_SPRING = { stiffness: 170, damping: 20, mass: 0.6 };
+const HEAD_SPRING = { stiffness: 110, damping: 20, mass: 0.9 };
+const EAR_SPRING = { stiffness: 90, damping: 19, mass: 1.0 };
 
-//     // ears
-//     const earMoveFactor = 0.5
-//     const earMoveX = headMoveX * earMoveFactor
+const BLINK_MIN_MS = 2000;
+const BLINK_RANGE_MS = 3000;
+const BLINK_DURATION_MS = 200;
 
-//     setPositions({
-//       head: {
-//         x: 90 + headMoveX,
-//         y: 110 + headMoveY,
-//       },
-//       leftEye: {
-//         x: 77.5 + eyeMoveX,
-//         y: 112 + eyeMoveY,
-//       },
-//       rightEye: {
-//         x: 103.5 + eyeMoveX,
-//         y: 112 + eyeMoveY,
-//       },
-//       leftEar: {
-//         x: 60 - earMoveX,
-//       },
-//       rightEar: {
-//         x: 120 - earMoveX,
-//       },
-//     })
-//   }, [])
+export default function BatCat({
+  width = 96,
+  height = 96,
+}: {
+  width?: number;
+  height?: number;
+}) {
+  const svgRef = useRef<SVGSVGElement>(null);
+  const rectRef = useRef<DOMRect | null>(null);
+  const [isBlinking, setIsBlinking] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
-//   const handleMouseMove = useCallback(
-//     (event: MouseEvent) => {
-//       handleMove(event.clientX, event.clientY)
-//     },
-//     [handleMove],
-//   )
+  // Normalised cursor direction, each axis in [-1, 1] and scaled by how far the
+  // cursor is from the logo. Written on pointer move; never stored in state, so
+  // moving the mouse does not re-render React.
+  const dirX = useMotionValue(0);
+  const dirY = useMotionValue(0);
 
-//   const handleTouchMove = useCallback(
-//     (event: TouchEvent) => {
-//       if (event.touches.length > 0) {
-//         const touch = event.touches[0]
-//         handleMove(touch.clientX, touch.clientY)
-//       }
-//     },
-//     [handleMove],
-//   )
+  const eyeX = useSpring(dirX, EYE_SPRING);
+  const eyeY = useSpring(dirY, EYE_SPRING);
+  const headX = useSpring(dirX, HEAD_SPRING);
+  const headY = useSpring(dirY, HEAD_SPRING);
+  const earX = useSpring(dirX, EAR_SPRING);
 
-//   useEffect(() => {
-//     window.addEventListener("mousemove", handleMouseMove)
-//     window.addEventListener("touchmove", handleTouchMove)
-//     return () => {
-//       window.removeEventListener("mousemove", handleMouseMove)
-//       window.removeEventListener("touchmove", handleTouchMove)
-//     }
-//   }, [handleMouseMove, handleTouchMove])
+  const headCx = useTransform(headX, (v) => HEAD.x + v * HEAD_TRAVEL);
+  const headCy = useTransform(headY, (v) => HEAD.y + v * HEAD_TRAVEL);
+  const leftEyeCx = useTransform(eyeX, (v) => LEFT_EYE.x + v * EYE_TRAVEL);
+  const rightEyeCx = useTransform(eyeX, (v) => RIGHT_EYE.x + v * EYE_TRAVEL);
+  const eyeCy = useTransform(eyeY, (v) => LEFT_EYE.y + v * EYE_TRAVEL);
 
-//   // blink
-//   useEffect(() => {
-//     const scheduleBlink = () => {
-//       const nextBlinkInterval = Math.random() * 3000 + 2000
-//       blinkRef.current = setTimeout(() => {
-//         setIsBlinking(true)
-//         blinkRef.current = setTimeout(() => setIsBlinking(false), 200)
-//         scheduleBlink()
-//       }, nextBlinkInterval)
-//     }
+  // Ears counter-rotate against the head, which reads as the head turning.
+  const leftEarD = useTransform(
+    earX,
+    (v) => `M${LEFT_EAR_X - v * EAR_TRAVEL} 34L127 180H17Z`
+  );
+  const rightEarD = useTransform(
+    earX,
+    (v) => `M${RIGHT_EAR_X - v * EAR_TRAVEL} 34L53 180H163Z`
+  );
 
-//     scheduleBlink()
-
-//     return () => {
-//       if (blinkRef.current) {
-//         clearTimeout(blinkRef.current)
-//       }
-//     }
-//   }, [])
-
-//   return (
-//     <svg id="brand" width={width} height={height} viewBox="0 0 180 180">
-//       <defs>
-//         <clipPath id="backgroundClip">
-//           <circle cx="90" cy="90" r="90" />
-//         </clipPath>
-//       </defs>
-//       <g clipPath="url(#backgroundClip)">
-//         <circle id="bg" cx="90" cy="90" r="90" className={cn("fill-zinc-900 dark:fill-zinc-100")} />
-//         <path
-//           id="left-ear"
-//           className={cn("fill-zinc-100 dark:fill-zinc-900")}
-//           d={`M${positions.leftEar.x} 34L${positions.leftEar.x} 34L127 180H17Z`}
-//         />
-//         <path
-//           id="right-ear"
-//           className={cn("fill-zinc-100 dark:fill-zinc-900")}
-//           d={`M${positions.rightEar.x} 34L${positions.rightEar.x} 34L53 180H163Z`}
-//         />
-//         <circle
-//           id="head"
-//           r="42"
-//           cx={positions.head.x}
-//           cy={positions.head.y}
-//           className={cn("fill-zinc-100 dark:fill-zinc-900")}
-//         />
-//         <ellipse
-//           rx="7"
-//           id="left-eye"
-//           cx={positions.leftEye.x}
-//           cy={positions.leftEye.y}
-//           ry={isBlinking ? "0" : "14"}
-//           className={cn("fill-zinc-900 dark:fill-zinc-100 transition-[ry] duration-150 ease-in-out")}
-//         />
-//         <ellipse
-//           id="right-eye"
-//           rx="7"
-//           cx={positions.rightEye.x}
-//           cy={positions.rightEye.y}
-//           ry={isBlinking ? "0" : "14"}
-//           className={cn("fill-zinc-900 dark:fill-zinc-100 transition-[ry] duration-150 ease-in-out")}
-//         />
-//       </g>
-//     </svg>
-//   )
-// }
-
-"use client"
-
-import { useState, useEffect, useCallback, useRef, useMemo } from "react"
-import { cn } from "@/lib/utils"
-
-export default function BatCat({ width = 96, height = 96 }: { width?: number, height?: number }) {
-  const blinkRef = useRef<null | NodeJS.Timeout>(null)
-  const [isBlinking, setIsBlinking] = useState(false)
-  const [positions, setPositions] = useState({
-    head: {
-      x: 90,
-      y: 110,
-    },
-    leftEye: {
-      x: 78,
-      y: 112,
-    },
-    rightEye: {
-      x: 104,
-      y: 112,
-    },
-    leftEar: {
-      x: 60,
-    },
-    rightEar: {
-      x: 120,
-    },
-  })
-  const [idleTime, setIdleTime] = useState(0)
-  const [isConfused, setIsConfused] = useState(false)
-  const lastMovementRef = useRef(Date.now())
-
-  const calculatePositions = useCallback((clientX: number, clientY: number) => {
-    const svgElement = document.getElementById("brand")
-    if (!svgElement) return null
-    const rect = svgElement.getBoundingClientRect()
-    const svgCenterX = rect.left + rect.width / 2;
-    const svgCenterY = rect.top + rect.height / 2;
-    const offsetX = clientX - svgCenterX;
-    const offsetY = clientY - svgCenterY;
-    const mouseDistance = Math.sqrt(offsetX * offsetX + offsetY * offsetY);
-    const maxDistance = 100;
-    const distanceRatio = Math.min(1, mouseDistance / maxDistance);
-    const angle = Math.atan2(offsetY, offsetX);
-    const headMaxOffset = 6;
-    const eyesMaxOffset = 20;
-    const earsMaxOffset = 10;
-    const headMoveX = Math.cos(angle) * headMaxOffset * distanceRatio;
-    const headMoveY = Math.sin(angle) * headMaxOffset * distanceRatio;
-    const eyesMoveX = Math.cos(angle) * eyesMaxOffset * distanceRatio;
-    const eyesMoveY = Math.sin(angle) * eyesMaxOffset * distanceRatio;
-    const earsMoveX = -headMoveX * 0.5 * distanceRatio;
-
-    return {
-      head: { x: 90 + headMoveX, y: 110 + headMoveY },
-      leftEye: { x: 77.5 + eyesMoveX, y: 112 + eyesMoveY },
-      rightEye: { x: 103.5 + eyesMoveX, y: 112 + eyesMoveY },
-      leftEar: { x: 60 + earsMoveX },
-      rightEar: { x: 120 + earsMoveX },
-    };
-  }, []);
-  const prevPositionsRef = useRef<{
-    clientX: number,
-    clientY: number,
-    result: ReturnType<typeof calculatePositions> | null
-  } | null>(null)
-  const handleMove = useMemo(() => {
-    return (clientX: number, clientY: number) => {
-      if (prevPositionsRef.current) {
-        const { clientX: prevClientX, clientY: prevClientY, result: prevResult } = prevPositionsRef.current
-        const distance = Math.sqrt(Math.pow(clientX - prevClientX, 2) + Math.pow(clientY - prevClientY, 2))
-        if (distance < 5) {
-          if(prevResult){
-            setPositions(prevResult)
-          }
-          return
-        }
-      }
-      const newPositions = calculatePositions(clientX, clientY)
-      if (newPositions) {
-        prevPositionsRef.current = {
-          clientX,
-          clientY,
-          result: newPositions
-        }
-        setPositions(newPositions)
-      }
-    };
-  }, [calculatePositions])
-
-  const handleMouseMove = useCallback((event: MouseEvent) => {
-    lastMovementRef.current = Date.now()
-    setIsConfused(false)
-    handleMove(event.clientX, event.clientY)
-  }, [handleMove])
-
-  const handleTouchMove = useCallback(
-    (event: TouchEvent) => {
-      if (event.touches.length > 0) {
-        const touch = event.touches[0]
-        handleMove(touch.clientX, touch.clientY)
-      }
-    },
-    [handleMove],
-  )
-
+  // Cursor tracking. No listeners at all when reduced motion is requested.
   useEffect(() => {
-    window.addEventListener("mousemove", handleMouseMove)
-    window.addEventListener("touchmove", handleTouchMove)
+    if (prefersReducedMotion) return;
+
+    const measure = () => {
+      rectRef.current = svgRef.current?.getBoundingClientRect() ?? null;
+    };
+
+    // Measured once here and on scroll/resize — never inside the move handler,
+    // where it would force a layout read on every pointer event.
+    measure();
+
+    const handleMove = (event: MouseEvent) => {
+      const rect = rectRef.current;
+      if (!rect) return;
+
+      const offsetX = event.clientX - (rect.left + rect.width / 2);
+      const offsetY = event.clientY - (rect.top + rect.height / 2);
+      const distance = Math.hypot(offsetX, offsetY);
+      if (distance === 0) return;
+
+      const ratio = Math.min(1, distance / MAX_DISTANCE);
+      dirX.set((offsetX / distance) * ratio);
+      dirY.set((offsetY / distance) * ratio);
+    };
+
+    window.addEventListener("mousemove", handleMove, { passive: true });
+    window.addEventListener("scroll", measure, { passive: true });
+    window.addEventListener("resize", measure);
+
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove)
-      window.removeEventListener("touchmove", handleTouchMove)
-    }
-  }, [handleMouseMove, handleTouchMove,])
+      window.removeEventListener("mousemove", handleMove);
+      window.removeEventListener("scroll", measure);
+      window.removeEventListener("resize", measure);
+    };
+    // Touch is deliberately not handled: cursor tracking is meaningless without
+    // a cursor, and a touchmove listener costs scroll performance on exactly
+    // the devices least able to absorb it.
+  }, [dirX, dirY, prefersReducedMotion]);
 
-  // blink
+  // Blink. One render every few seconds, which is cheap enough for state.
   useEffect(() => {
+    if (prefersReducedMotion) return;
+
+    let closeTimer: ReturnType<typeof setTimeout>;
+    let openTimer: ReturnType<typeof setTimeout>;
+
     const scheduleBlink = () => {
-      const nextBlinkInterval = Math.random() * 3000 + 2000
-      blinkRef.current = setTimeout(() => {
-        setIsBlinking(true)
-        blinkRef.current = setTimeout(() => setIsBlinking(false), 200)
-        scheduleBlink()
-      }, nextBlinkInterval)
-    }
+      closeTimer = setTimeout(() => {
+        setIsBlinking(true);
+        openTimer = setTimeout(() => {
+          setIsBlinking(false);
+          scheduleBlink();
+        }, BLINK_DURATION_MS);
+      }, Math.random() * BLINK_RANGE_MS + BLINK_MIN_MS);
+    };
 
-    scheduleBlink()
+    scheduleBlink();
 
     return () => {
-      if (blinkRef.current) {
-        clearTimeout(blinkRef.current)
-      }
-    }
-  }, [])
+      clearTimeout(closeTimer);
+      clearTimeout(openTimer);
+    };
+  }, [prefersReducedMotion]);
 
   return (
-    <svg id="brand" width={width} height={height} viewBox="0 0 180 180">
+    <svg ref={svgRef} width={width} height={height} viewBox="0 0 180 180">
       <defs>
-        <clipPath id="backgroundClip">
+        <clipPath id="batcat-clip">
           <circle cx="90" cy="90" r="90" />
         </clipPath>
       </defs>
-      <g clipPath="url(#backgroundClip)">
-        <circle id="bg" cx="90" cy="90" r="90" className={cn("fill-zinc-900 dark:fill-zinc-100")} />
-        <path
-          id="left-ear"
-          className={cn("fill-zinc-100 dark:fill-zinc-900")}
-          d={`M${positions.leftEar.x} 34L${positions.leftEar.x} 34L127 180H17Z`}
-        />
-        <path
-          id="right-ear"
-          className={cn("fill-zinc-100 dark:fill-zinc-900")}
-          d={`M${positions.rightEar.x} 34L${positions.rightEar.x} 34L53 180H163Z`}
-        />
+      <g clipPath="url(#batcat-clip)">
         <circle
-          id="head"
-          r="42"
-          cx={positions.head.x}
-          cy={positions.head.y}
+          cx="90"
+          cy="90"
+          r="90"
+          className={cn("fill-zinc-900 dark:fill-zinc-100")}
+        />
+        <motion.path
+          d={leftEarD}
           className={cn("fill-zinc-100 dark:fill-zinc-900")}
         />
-        <ellipse
-          rx="8"
-          id="left-eye"
-          cx={positions.leftEye.x}
-          cy={positions.leftEye.y}
-          ry={isBlinking ? "0" : "14"}
-          className={cn("fill-zinc-900 dark:fill-zinc-100 transition-[ry] duration-150 ease-in-out")}
+        <motion.path
+          d={rightEarD}
+          className={cn("fill-zinc-100 dark:fill-zinc-900")}
         />
-        <ellipse
-          id="right-eye"
+        <motion.circle
+          r="42"
+          cx={headCx}
+          cy={headCy}
+          className={cn("fill-zinc-100 dark:fill-zinc-900")}
+        />
+        <motion.ellipse
           rx="8"
-          cx={positions.rightEye.x}
-          cy={positions.rightEye.y}
+          cx={leftEyeCx}
+          cy={eyeCy}
           ry={isBlinking ? "0" : "14"}
-          className={cn("fill-zinc-900 dark:fill-zinc-100 transition-[ry] duration-150 ease-in-out")}
+          className={cn(
+            "fill-zinc-900 dark:fill-zinc-100 transition-[ry] duration-150 ease-in-out"
+          )}
+        />
+        <motion.ellipse
+          rx="8"
+          cx={rightEyeCx}
+          cy={eyeCy}
+          ry={isBlinking ? "0" : "14"}
+          className={cn(
+            "fill-zinc-900 dark:fill-zinc-100 transition-[ry] duration-150 ease-in-out"
+          )}
         />
       </g>
     </svg>
-  )
+  );
 }
