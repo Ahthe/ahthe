@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import { Header } from "@/components/header";
+import { ViewTransitions } from "@/components/view-transitions";
 import { ThemeProvider } from "./theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -29,7 +30,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://ahthe.vercel.app//logo.svg",
+        // Generated 1200x630 card from app/opengraph-image/route.tsx. This
+        // previously pointed at /logo.svg — a 277 KB traced SVG that no social
+        // platform would render as a card.
+        url: "https://ahthe.vercel.app/opengraph-image",
         width: 1200,
         height: 630,
         alt: " Syed Ahthesham Ali",
@@ -75,10 +79,14 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <ViewTransitions />
           <main className=" antialiased lg:max-w-2xl md:max-w-full mx-4 mb-40 flex flex-col md:flex-row  mt-2 sm:mt-8 lg:mx-auto">
             <section className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
               <Header />
-              {children}
+              {/* Only the page body carries the transition name, so the
+                  header and BatCat stay put across navigations instead of
+                  cross-fading with the content. */}
+              <div style={{ viewTransitionName: "page" }}>{children}</div>
             </section>
           </main>
         </ThemeProvider>

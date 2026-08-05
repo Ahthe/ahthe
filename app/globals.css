@@ -41,6 +41,15 @@
 
     --radius: 0.5rem;
 
+    /* Motion tokens — every animation on this site resolves to one of these.
+       Keep --dur-base and --ease-out-soft in sync with the `enter` animation
+       in tailwind.config.ts, which cannot read CSS custom properties. */
+    --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1); /* reveals: fast out, long settle */
+    --ease-standard: cubic-bezier(0.4, 0, 0.2, 1); /* symmetric: state toggles */
+    --dur-fast: 150ms; /* hover, focus, colour */
+    --dur-base: 280ms; /* page enter */
+    --dur-slow: 400ms; /* theme cross-fade only */
+
     /* Sugar high  */
     --sh-class: #2d5e9d;
     --sh-identifier: #354150;
@@ -115,7 +124,9 @@
 }
 
 .prose a {
-  @apply transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
+  @apply decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
+  transition: color var(--dur-fast) var(--ease-standard),
+    text-decoration-color var(--dur-fast) var(--ease-standard);
 }
 
 .prose .anchor:after {
@@ -229,8 +240,70 @@ table {
   background-color: var(--background);
 }
 
-.container>* {
-  animation: enter 0.3s ease both;
-  animation-delay: calc(var(--delay) * var(--stagger));
-  --delay: 120ms;
+/* Native smooth scrolling. Deliberately not a scroll-hijacking library:
+   the browser's own implementation is interruptible, respects trackpad
+   momentum and the OS scroll speed, and is neutralised automatically by
+   the reduced-motion block below. scroll-padding keeps heading anchors
+   clear of the top edge when jumping to a #hash. */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+}
+
+/* Cross-fade between routes. Uses the same View Transitions machinery as
+   the theme toggle, which means no AnimatePresence at the layout level
+   and therefore no loss of static prerendering on /, /work and /projects. */
+/* The outgoing page lifts and fades; the incoming one only cross-fades,
+   because its upward settle already comes from .animate-enter. Doing the
+   slide in both places would compound into twice the travel. */
+::view-transition-old(page) {
+  animation: page-exit var(--dur-fast) var(--ease-standard) both;
+}
+
+::view-transition-new(page) {
+  animation-duration: var(--dur-fast);
+  animation-timing-function: var(--ease-standard);
+}
+
+@keyframes page-exit {
+  to {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+/* Focus rings — the site had no visible focus style beyond the browser default. */
+:where(a, button, [role="button"], input, select, textarea):focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* Theme cross-fade via the View Transitions API. Chrome and Edge cross-fade;
+   Safari and Firefox fall through to the instant flip they already had. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: var(--dur-slow);
+  animation-timing-function: var(--ease-standard);
+  mix-blend-mode: normal;
+}
+
+/* Motion is decoration. When the OS asks for less of it, give none of it.
+   This covers CSS only — JS-driven springs (BatCat) and the theme toggle
+   carry their own useReducedMotion() guards. */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
 }

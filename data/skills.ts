@@ -17,7 +17,7 @@ export const skillsData: Skill[] = [
   },
   {
     name: "Java",
-    icon: "react-icons:FaJava", // Or "cib:java" if using CoreUI Icons
+    icon: "fa:java",
     level: "5 years of experience",
     keywords: ["Programming Language", "Backend", "Android", "Enterprise"],
   },
@@ -35,7 +35,7 @@ export const skillsData: Skill[] = [
   },
   {
     name: "C#",
-    icon: "simple-icons:csharp",
+    icon: "simple-icons:dotnet",
     level: "3 years of experience",
     keywords: ["Programming Language", "Backend", ".NET", "Game Development", "Unity"],
   },
@@ -127,7 +127,7 @@ export const skillsData: Skill[] = [
   // Software & Tools
   {
     name: "AWS",
-    icon: "simple-icons:amazonaws",
+    icon: "fa:aws",
     level: "Intermediate", // Adjust level as needed
     keywords: ["Cloud", "Infrastructure", "DevOps", "Hosting"],
   },

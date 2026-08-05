@@ -6,8 +6,16 @@ import React from "react";
 import { highlight } from "sugar-high";
 import { CopyCode } from "./copy-code";
 import { ExpandableCode } from "./expandable-code";
-import { TaskSimulator, RaceConditionVisualizer, GoroutineScheduler, ChannelSimulator, UnbufferedChannelDemo } from './interactive-components';
-import { CodePlayground } from './interactive-components/code-playground';
+// Lazy boundary lives in a client module — see the note in that file for why
+// next/dynamic called from here (a Server Component) does not split them out.
+import {
+  ChannelSimulator,
+  CodePlayground,
+  GoroutineScheduler,
+  RaceConditionVisualizer,
+  TaskSimulator,
+  UnbufferedChannelDemo,
+} from "./interactive-components/lazy";
 
 function Table({ data }) {
   let headers = data.headers.map((header, index) => (

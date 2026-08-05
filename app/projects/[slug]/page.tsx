@@ -56,7 +56,7 @@ export default async function ProjectDetailPage({ params }: Props) {
   }
 
   return (
-    <Container size="large"> {/* Or use a different container/layout */}
+    <Container size="large" className="animate-enter"> {/* Or use a different container/layout */}
       {/* Optional: Add Schema.org JSON-LD like in the blog */}
       {/* <script type="application/ld+json" ... /> */}
 

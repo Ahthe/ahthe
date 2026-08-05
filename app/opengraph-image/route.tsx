@@ -6,11 +6,10 @@ export const runtime = "edge";
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
-    const title = searchParams.get("title");
-
-    if (!title) {
-      return new Response("Missing title parameter", { status: 400 });
-    }
+    // Falls back to the site title so the route can also serve as the
+    // site-wide OpenGraph image, not only per-post cards.
+    const title =
+      searchParams.get("title") || "Syed Ahthesham Ali — Software Engineer";
 
     return new ImageResponse(
       (
@@ -36,18 +35,6 @@ export async function GET(req: NextRequest) {
               gap: "8px",
             }}
           >
-            <img
-              src={new URL(
-                "/logo.svg",
-                process.env.NEXT_PUBLIC_APP_URL
-              ).toString()}
-              width={24}
-              height={24}
-              alt="Logo"
-              style={{
-                objectFit: "contain",
-              }}
-            />
             <span
               style={{
                 color: "white",
@@ -55,7 +42,7 @@ export async function GET(req: NextRequest) {
                 fontWeight: 500,
               }}
             >
-              onurhan.dev
+              ahthe.vercel.app
             </span>
           </div>
 
