@@ -8,7 +8,7 @@ const structuredData = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: " Syed Ahthesham Ali",
-  jobTitle: "AI / Software Engineer",
+  jobTitle: "Software Engineer (Forward Deployed)",
   worksFor: {
     "@type": "Organization",
     name: "Captain Jays Fish & Chicken, Dearborn",
@@ -16,7 +16,6 @@ const structuredData = {
   url: "https://ahthe.vercel.app/",
   sameAs: [
     "https://github.com/ahthe",
-    "https://youtube.com/@onurhandev",
     "https://300040543422795776.hello.cv/",
   ],
 };
@@ -24,7 +23,7 @@ const structuredData = {
 export default function About() {
   const paragraphs = [
     <>
-      As a AI / Software Engineer at{" "}
+      As a Software Engineer (Forward Deployed) at{" "}
       <span className="font-medium decoration-wavy underline decoration-from-font text-emerald-950 decoration-emerald-500 dark:text-emerald-50 dark:decoration-emerald-400 tracking-tight">
         Captain Jays Fish & Chicken
       </span>

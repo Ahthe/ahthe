@@ -22,11 +22,14 @@ export default function Work() {
                 Captain Jays Fish & Chicken, Dearborn - MI
               </h2>
               <time className="text-neutral-600 dark:text-neutral-400 text-sm">
-                Software Engineer (Forward Deployed Engineer), January 2025 — PRESENT
+                Software Engineer (Forward Deployed), January 2025 — PRESENT
               </time>
             </header>
             <p>
-              Engineered production Al systems deployed across 27+ restaurant locations, driving measurable operational efficiency and cost reduction through voice automation, machine learning-based screening, and intelligent compliance tools
+              Engineered production AI systems deployed across 27+ restaurant
+              locations, driving measurable operational efficiency and cost
+              reduction through voice automation, an internal training platform,
+              and AI-assisted store audits.
             </p>
             <ul>
               <li>
