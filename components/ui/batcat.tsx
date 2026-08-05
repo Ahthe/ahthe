@@ -149,10 +149,27 @@ function BatCatImpl({
   const eyeGazeX = useSpring(gazeX, EYE_SPRING);
   const eyeGazeY = useSpring(gazeY, EYE_SPRING);
 
+  /* Vergence: eyes converge slightly on a near target, the way real
+   * eyes do when focusing on something close. Absolute displacement
+   * this small would be invisible, but this changes the *gap* between
+   * two adjacent shapes — the gap is 10 units, so 2.5 units per eye is
+   * a 50% change in the one relationship the viewer can actually read. */
+  const vergence = useSpring(useMotionValue(0), {
+    stiffness: 200,
+    damping: 26,
+    mass: 0.6,
+  });
+
   const headCx = useTransform(headFollowX, (v) => HEAD.x + v * HEAD_TRAVEL);
   const headCy = useTransform(headFollowY, (v) => HEAD.y + v * HEAD_TRAVEL);
-  const eyeLCx = useTransform(eyeGazeX, (v) => EYE_L_X + v * EYE_TRAVEL);
-  const eyeRCx = useTransform(eyeGazeX, (v) => EYE_R_X + v * EYE_TRAVEL);
+  const eyeLCx = useTransform(
+    [eyeGazeX, vergence] as MotionValue[],
+    ([g, v]: number[]) => EYE_L_X + g * EYE_TRAVEL + v
+  );
+  const eyeRCx = useTransform(
+    [eyeGazeX, vergence] as MotionValue[],
+    ([g, v]: number[]) => EYE_R_X + g * EYE_TRAVEL - v
+  );
   const eyeCy = useTransform(
     [eyeGazeY, lidCy] as MotionValue[],
     ([g, l]: number[]) => EYE_Y + g * EYE_TRAVEL + l
@@ -285,6 +302,8 @@ function BatCatImpl({
       const ratio = Math.min(1, d / R_TRACK_SAT);
       gazeX.set((dx / d) * ratio * gain);
       gazeY.set((dy / d) * ratio * gain);
+      // Converge on anything inside ~90px; released as the cursor recedes.
+      vergence.set(Math.max(0, 1 - d / 90) * 2.5);
     };
     const onLeave = (e: PointerEvent) => {
       if (e.relatedTarget === null) m.present = false;
@@ -343,18 +362,36 @@ function BatCatImpl({
     document.addEventListener("visibilitychange", onVisibility);
 
     /* -------------------- gestures -------------------- */
+    /* Both lids are driven independently so they can be offset. Real
+     * eyelids are never perfectly synchronised, and ~18ms of stagger is
+     * below conscious notice but reads as organic rather than mechanical
+     * — the same trick as the exponential blink interval, one level down. */
+    const LID_STAGGER_MS = 18;
+
     const blink = (slow = false) => {
       const closeMs = slow ? 0.42 : 0.07;
       const openMs = slow ? 0.52 : 0.14;
       const hold = slow ? 280 : 40;
       const target = slow ? 2.5 : 0;
       const rest = POLICY[m.mode].lidRy;
+      const closeEase: [number, number, number, number] = [0.4, 0, 1, 1];
+      // A touch of overshoot on the way open: lids rebound slightly past
+      // rest before settling, which is what a real blink does.
+      const openEase: [number, number, number, number] = slow
+        ? [0.2, 0.8, 0.3, 1]
+        : [0.2, 1.25, 0.5, 1];
 
-      animate(lidRy, target, { duration: closeMs, ease: [0.4, 0, 1, 1] });
-      animate(lidRyR, target, { duration: closeMs, ease: [0.4, 0, 1, 1] });
+      animate(lidRy, target, { duration: closeMs, ease: closeEase });
+      setTimeout(
+        () => animate(lidRyR, target, { duration: closeMs, ease: closeEase }),
+        LID_STAGGER_MS
+      );
       setTimeout(() => {
-        animate(lidRy, rest, { duration: openMs, ease: [0, 0, 0.2, 1] });
-        animate(lidRyR, rest, { duration: openMs, ease: [0, 0, 0.2, 1] });
+        animate(lidRy, rest, { duration: openMs, ease: openEase });
+        setTimeout(
+          () => animate(lidRyR, rest, { duration: openMs, ease: openEase }),
+          LID_STAGGER_MS
+        );
       }, closeMs * 1000 + hold);
     };
 
@@ -581,11 +618,16 @@ function BatCatImpl({
 
       if (m.saccadeAt && now >= m.saccadeAt && m.pendingGaze) {
         const [tx, ty] = m.pendingGaze;
-        animate(gazeX, tx, { duration: SACCADE_MS / 1000, ease: [0.2, 0.8, 0.2, 1] });
-        animate(gazeY, ty, { duration: SACCADE_MS / 1000, ease: [0.2, 0.8, 0.2, 1] });
+        // Real saccades overshoot the target slightly and correct back.
+        const ease: [number, number, number, number] = [0.2, 1.12, 0.45, 1];
+        animate(gazeX, tx, { duration: SACCADE_MS / 1000, ease });
+        animate(gazeY, ty, { duration: SACCADE_MS / 1000, ease });
         m.saccadeAt = 0;
         m.pendingGaze = null;
       }
+
+      // Release convergence whenever it is not looking at something near.
+      if (!tracking || dist > 90) vergence.set(0);
 
       // The double take: when the cursor leaves, keep looking at where
       // it was for a beat. Exactly what an animal does when something
@@ -663,6 +705,7 @@ function BatCatImpl({
     tilt,
     rootTy,
     rootSy,
+    vergence,
   ]);
 
   return (

@@ -240,6 +240,38 @@ table {
   background-color: var(--background);
 }
 
+/* Native smooth scrolling. Deliberately not a scroll-hijacking library:
+   the browser's own implementation is interruptible, respects trackpad
+   momentum and the OS scroll speed, and is neutralised automatically by
+   the reduced-motion block below. scroll-padding keeps heading anchors
+   clear of the top edge when jumping to a #hash. */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+}
+
+/* Cross-fade between routes. Uses the same View Transitions machinery as
+   the theme toggle, which means no AnimatePresence at the layout level
+   and therefore no loss of static prerendering on /, /work and /projects. */
+/* The outgoing page lifts and fades; the incoming one only cross-fades,
+   because its upward settle already comes from .animate-enter. Doing the
+   slide in both places would compound into twice the travel. */
+::view-transition-old(page) {
+  animation: page-exit var(--dur-fast) var(--ease-standard) both;
+}
+
+::view-transition-new(page) {
+  animation-duration: var(--dur-fast);
+  animation-timing-function: var(--ease-standard);
+}
+
+@keyframes page-exit {
+  to {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
 /* Focus rings — the site had no visible focus style beyond the browser default. */
 :where(a, button, [role="button"], input, select, textarea):focus-visible {
   outline: 2px solid hsl(var(--ring));
