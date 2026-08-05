@@ -29,7 +29,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://ahthe.vercel.app//logo.svg",
+        // Generated 1200x630 card from app/opengraph-image/route.tsx. This
+        // previously pointed at /logo.svg — a 277 KB traced SVG that no social
+        // platform would render as a card.
+        url: "https://ahthe.vercel.app/opengraph-image",
         width: 1200,
         height: 630,
         alt: " Syed Ahthesham Ali",
