@@ -458,6 +458,48 @@ appears, the design has failed.**
    (watch `data-mode` in the Elements panel).
 9. Scroll a blog post past the header → no BatCat scripting afterwards.
 
+## 10a. Corrections found during implementation
+
+Two things in this spec were wrong and were changed after measuring.
+
+**1. Saccades are for autonomous looking, not for tracking.** §4.3 specified
+saccadic gaze for cursor tracking, on the grounds that continuous sub-pixel
+motion reads as antialiasing shimmer. Built that way it felt **laggy**, and the
+owner said so immediately — correctly. The reasoning conflated two different eye
+behaviours: real eyes use *smooth pursuit* to follow a moving target and
+*saccades* only to jump to a new fixation point.
+
+Implemented: smooth pursuit for the cursor, driven on the pointer event rather
+than the 10 Hz tick (waiting for the tick added up to 100 ms of latency on its
+own), with a fast critically-damped spring. Saccades are retained only for the
+autonomous look targets, where the deliberate latency is the point. Measured
+147 ms to 90% on a 400 px cursor jump, continuous motion every frame, no
+overshoot.
+
+**2. `content-visibility` does not suspend this.** §7.3 claimed it replaces an
+IntersectionObserver, based on a measurement of *CSS* animations where the
+browser skips style and layout. This animation is JavaScript writing attributes:
+`content-visibility` skips rendering work, not JS execution. Measured with it in
+place: **472 attribute writes/sec while scrolled out of view.**
+
+Implemented: a real IntersectionObserver that stops the tick and detaches the
+pointer listener, sharing one suspend/resume path with `visibilitychange`.
+Measured after: **0 writes/sec offscreen.** The CSS property is retained for the
+rendering-side saving it does provide.
+
+**Measured result (production build):**
+
+| Condition | writes/sec | p95 frame |
+|---|---|---|
+| Idle, cursor away | 58 | 6.2 ms |
+| Cursor actively moving over the logo | 965 | 6.2 ms |
+| Scrolled out of view | **0** | 6.2 ms |
+| `prefers-reduced-motion` | **0** | — |
+
+Frame time is identical across all conditions with zero frames over 20 ms. At
+~0.6 µs per attribute write, the busiest case costs ~10 µs/frame — 0.06% of a
+16 ms budget.
+
 ## 11. Risks
 
 | Risk | Mitigation |

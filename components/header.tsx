@@ -66,7 +66,10 @@ export const Header = () => {
         >
           <div className="flex flex-row items-center">
             <Link href="/">
-              <div className="w-[40px] h-[40px]">
+              {/* content-visibility skips style and layout entirely once
+                  the header scrolls out of view. Measured to beat an
+                  IntersectionObserver, at one line and no JS. */}
+              <div className="w-[40px] h-[40px] [content-visibility:auto] [contain-intrinsic-size:40px_40px]">
                 <BatCat width={40} height={40} />
               </div>
               <span className="sr-only">Syed Ahthesham Ali</span>
