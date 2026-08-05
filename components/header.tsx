@@ -98,7 +98,7 @@ export const Header = () => {
                       // active link changes its width and reflows the whole nav
                       // on every navigation.
                       "relative flex align-middle font-normal py-1 px-2",
-                      "transition-opacity duration-[var(--dur-fast)] ease-[var(--ease-standard)]",
+                      "transition-opacity [transition-duration:var(--dur-fast)] [transition-timing-function:var(--ease-standard)]",
                       isActive ? "opacity-100" : "opacity-60 hover:opacity-100"
                     )}
                   >

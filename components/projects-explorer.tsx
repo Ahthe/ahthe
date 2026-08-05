@@ -57,7 +57,7 @@ const FILTER_CATEGORIES = {
 const chipClass = (active: boolean) =>
   [
     "p-1 text-center text-sm font-medium rounded-md cursor-pointer whitespace-nowrap",
-    "transition-colors duration-[var(--dur-fast)] ease-[var(--ease-standard)]",
+    "transition-colors [transition-duration:var(--dur-fast)] [transition-timing-function:var(--ease-standard)]",
     active
       ? "bg-blue-200 text-blue-700 dark:bg-blue-900 dark:text-blue-300"
       : "bg-slate-200 text-slate-500 hover:text-slate-600 dark:bg-slate-800 dark:text-slate-300 dark:hover:text-slate-200",
@@ -163,7 +163,7 @@ export default function ProjectsExplorer({
                         href={project.Link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center text-sm no-underline hover:font-medium transition-colors duration-[var(--dur-fast)] ease-[var(--ease-standard)]"
+                        className="flex items-center text-sm no-underline hover:font-medium transition-colors [transition-duration:var(--dur-fast)] [transition-timing-function:var(--ease-standard)]"
                       >
                         <FaGithub className="mr-1" />
                         <span className="underline hover:no-underline">
@@ -177,7 +177,7 @@ export default function ProjectsExplorer({
                         href={project.Demo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center text-sm no-underline hover:font-medium transition-colors duration-[var(--dur-fast)] ease-[var(--ease-standard)]"
+                        className="flex items-center text-sm no-underline hover:font-medium transition-colors [transition-duration:var(--dur-fast)] [transition-timing-function:var(--ease-standard)]"
                       >
                         <FaExternalLinkAlt className="mr-1" />
                         <span className="underline hover:no-underline">Link</span>
@@ -187,7 +187,7 @@ export default function ProjectsExplorer({
                     {project.slug && (
                       <Link
                         href={`/projects/${project.slug}`}
-                        className="flex items-center text-sm no-underline hover:font-medium transition-colors duration-[var(--dur-fast)] ease-[var(--ease-standard)]"
+                        className="flex items-center text-sm no-underline hover:font-medium transition-colors [transition-duration:var(--dur-fast)] [transition-timing-function:var(--ease-standard)]"
                       >
                         <FaExternalLinkAlt className="mr-1" />
                         <span className="underline hover:no-underline">

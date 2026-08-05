@@ -18,6 +18,11 @@ import {
 } from "./interactive-components/lazy";
 
 function Table({ data }) {
+  // Defensive: a table with no data should degrade to nothing rather than
+  // throwing and 500-ing the whole post, which is what happened when
+  // next-mdx-remote v6 began stripping JSX expression props by default.
+  if (!data?.headers || !data?.rows) return null;
+
   let headers = data.headers.map((header, index) => (
     <th
       key={index}
@@ -277,6 +282,10 @@ const components = {
   code: Code,
   Table,
   LinkCardList,
+  // Two posts use <LinkCard> directly, but only LinkCardList was ever
+  // registered — so those posts have been returning 500 in production.
+  // Pre-existing, unrelated to the next-mdx-remote upgrade.
+  LinkCard,
   BuyMeACoffee,
   TaskSimulator,
   RaceConditionVisualizer,
@@ -287,5 +296,28 @@ const components = {
 };
 
 export function CustomMDX({ source }: { source: string }) {
-  return <MDXRemote source={source} components={components} />;
+  return (
+    <MDXRemote
+      source={source}
+      components={components}
+      options={{
+        /**
+         * next-mdx-remote v6 blocks JSX expressions by default — that is the
+         * fix for the RCE advisory against 5.x, and it is aimed at UNTRUSTED
+         * MDX. Ours is first-party: it lives in content/*.mdx in this repo and
+         * goes through code review like any other file. With expressions
+         * blocked, `<Table data={{...}} />` received no props at all and threw,
+         * 500-ing three published posts.
+         *
+         * blockDangerousJS stays at its default of true, so eval, Function,
+         * process, require and the other RCE vectors remain blocked. This only
+         * re-enables plain expression props — option 1, "trusted content with
+         * protection", in the library's own security guidance.
+         *
+         * If this site ever renders MDX it did not author, revert this.
+         */
+        blockJS: false,
+      }}
+    />
+  );
 }
