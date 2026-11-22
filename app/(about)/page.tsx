@@ -11,7 +11,7 @@ const structuredData = {
   jobTitle: "Software Engineer (Forward Deployed)",
   worksFor: {
     "@type": "Organization",
-    name: "Captain Jays Fish & Chicken, Dearborn",
+    name: "Captain Jay's Corporate",
   },
   url: "https://ahthe.vercel.app/",
   sameAs: [
@@ -21,26 +21,6 @@ const structuredData = {
 };
 
 export default function About() {
-  const paragraphs = [
-    <>
-      As a Software Engineer (Forward Deployed) at{" "}
-      <span className="font-medium decoration-wavy underline decoration-from-font text-emerald-950 decoration-emerald-500 dark:text-emerald-50 dark:decoration-emerald-400 tracking-tight">
-        Captain Jays Fish & Chicken
-      </span>
-      , I focus on developing comprehensive applications that deliver value
-      across various aspects of software. My expertise bridges the gap between
-      design and functionality, reflecting my passion for creating seamless user
-      experiences.
-    </>,
-    `Driven by a love for software development, I thrive on leveraging user
-     feedback to enhance products and optimize workflows. I find particular
-     excitement in building solutions that streamline processes and contribute
-     to impactful projects.`,
-    `Outside of work, I enjoy crafting minimalist
-     digital tools that address web-related challenges and improve
-     development efficiency.`,
-  ];
-
   return (
     <Container
       size="large"
@@ -50,14 +30,25 @@ export default function About() {
       <p className="my-5 text-zinc-800 dark:text-zinc-200">
         Hi, I&apos;m Ahthesham.
       </p>
-      {paragraphs.map((paragraph, index) => (
-        <div key={index}>
-          <p className={index === paragraphs.length - 1 ? "mb-8" : ""}>
-            {paragraph}
-          </p>
-          {index === 0 && <hr />}
-        </div>
-      ))}
+      <p className="leading-relaxed">
+        As a Software Engineer at{" "}
+        <span className="font-medium decoration-wavy underline decoration-from-font text-emerald-950 decoration-emerald-500 dark:text-emerald-50 dark:decoration-emerald-400 tracking-tight">
+          Captain Jay&apos;s Corporate
+        </span>
+        , where I also work as a Forward Deployed Engineer, I focus on
+        developing comprehensive applications that deliver value across various
+        aspects of software. My expertise bridges the gap between design and
+        functionality, reflecting my passion for creating seamless user
+        experiences.
+      </p>
+      <p className="mt-6 mb-8 leading-relaxed">
+        Driven by a love for software development, I thrive on leveraging user
+        feedback to enhance products and optimize workflows. I find particular
+        excitement in building solutions that streamline processes and
+        contribute to impactful projects. Outside of work, I enjoy crafting
+        minimalist digital tools that address web-related challenges and improve
+        development efficiency.
+      </p>
       <EducationSection />
       <SkillsSection />
       <Social />

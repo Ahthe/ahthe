@@ -1,169 +1,150 @@
 import Container from "@/components/shared/container";
-// import SkillsSection from "@/components/skills-section";
 
 export default function Work() {
   return (
-    <Container size="large" className="animate-enter">
-      <main className="prose prose-neutral dark:prose-invert">
-        <header>
-          <p>
+    <Container size="large" className="mt-12 md:mt-24 mb-20">
+      <main className="max-w-3xl mx-auto">
+        <header className="mb-12 md:mb-20">
+          <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 mb-6">
+            Work Experience
+          </h1>
+          <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-xl">
             On a mission to create impactful applications that engage users and
             drive value for businesses. Here&apos;s a summary of my journey so
             far.
           </p>
-          <hr className="my-6 border-neutral-200 dark:border-neutral-800" />
         </header>
 
-        <section>
+        <div className="relative border-l border-zinc-200 dark:border-zinc-800 ml-3 md:ml-4 space-y-12 md:space-y-20 pb-12">
 
-          <article>
-            <header>
-              <h2 className="font-medium text-xl mb-1 tracking-tighter">
-                Captain Jays Fish & Chicken, Dearborn - MI
+          <article className="relative pl-8 md:pl-12">
+            <div className="absolute -left-[5px] md:-left-[6px] top-2 h-2.5 w-2.5 rounded-full bg-emerald-500 ring-4 ring-white dark:ring-zinc-950" />
+            <header className="mb-6">
+              <h2 className="text-xl md:text-2xl font-bold text-zinc-800 dark:text-zinc-100 tracking-tight">
+                Captain Jay&apos;s Corporate
               </h2>
-              <time className="text-neutral-600 dark:text-neutral-400 text-sm">
-                Software Engineer (Forward Deployed), January 2025 — PRESENT
+              <time className="block mt-2 text-sm font-medium text-emerald-600 dark:text-emerald-400 uppercase tracking-wide">
+                Software Engineer • Jan 2025 — Present
               </time>
             </header>
-            <p>
-              Engineered production AI systems deployed across 27+ restaurant
-              locations, driving measurable operational efficiency and cost
-              reduction through voice automation, an internal training platform,
-              and AI-assisted store audits.
-            </p>
-            <ul>
-              <li>
-                Identified phone-order abandonment as the largest revenue leak during peak promotions, then led vendor evaluation
-                and the 27-location rollout of a Voice AI phone-agent platform running 50 concurrent agents, generating an
-                estimated $865K in annual labor savings
-              </li>
-
-              <li>
-                Drove cross-functional delivery across three external engineering teams during a 9-month NCR Aloha POS
-                integration, tracing JSON payloads to resolve item-ID and API errors causing zero-priced and missing menu items            
-              </li>
-
-              <li>
-                Rebuilt the voice agent’s prompt and conversation flow with the vendor’s senior engineer to eliminate hallucinated
-                orders on the chain’s highest-volume weekly promotion, raising order accuracy to 95% company-wide
-              </li>
-
-              <li>
-                 Reduced new-hire ramp time from 3 weeks to 1 week by building Captain Jay’s University, an LMS in Next.js,
-                TypeScript, FastAPI, PostgreSQL, and Docker, now deployed company-wide to all 315 employees across 27
-                locations, serving 260+ lessons, server-scored certification exams, and manager analytics
-              </li>
-
-              <li>
-                Redesigned store audits through stakeholder interviews with district managers and staff, then built an AI-assisted
-                platform that raised normalized scores from 48–60% to 73–82% for 27 locations using Next.js, TypeScript, FastAPI,
-                PostgreSQL, Cloudflare R2, GPT-4o Vision for photo verification, and Power Automate for Teams  
-              </li>
-
-            </ul>
+            <div className="prose prose-zinc dark:prose-invert max-w-none text-zinc-600 dark:text-zinc-400">
+              <p>
+                Architected the internal operations and AI platform for 27 restaurants and 462 employees (FastAPI, PostgreSQL, Next.js, Docker), partnering with leadership and external engineering teams to automate manual store workflows and ship production systems.
+              </p>
+              <ul>
+                <li>
+                  Cut new-hire training by 67% (3 weeks to 1) across 27 restaurants and 462 employees by building a 620-lesson LMS with server-enforced exams and 200+ pytest CI tests (Python, FastAPI REST API, PostgreSQL, Next.js, Docker).
+                </li>
+                <li>
+                  Diagnosed and fixed a cache-and-sync bug in the prior LMS behind 1,151 false completions on shared store PCs, shipping a 4-layer sync fix, a dry-run repair script with DB backups (0 recurrences), and the incident report.
+                </li>
+                <li>
+                  Built a food-safety photo checklist app (FastAPI, Next.js) where 3 AI models vote on each photo and unclear ones go to human review, raising completion from 15% to 95% with 0 wrong auto-grades in a 910-photo audit.
+                </li>
+                <li>
+                  Replaced director-graded Cognito Forms audits with an AI agent pipeline (FastAPI, Next.js, Cloudflare R2) that EXIF-validates and grades photos, ranks 27 stores, and drafts coaching plans, saving the director 13+ hours weekly.
+                </li>
+                <li>
+                  Restored 15 to 20% of menu items falsely marked out of stock by debugging NCR Aloha POS REST API integrations with 3 external engineering teams and fixing malformed JSON payloads and item-ID mismatches.
+                </li>
+                <li>
+                  Raised live AI phone-order accuracy from 50% to 90% across 27 stores by designing the order state flow, prompt architecture, and strict-JSON POS schema, shipped through design reviews with the vendor&apos;s senior engineer.
+                </li>
+              </ul>
+            </div>
           </article>
 
-
-          <article>
-            <header>
-              <h2 className="font-medium text-xl mb-1 tracking-tighter">
-                American Muslim Center, Dearborn - MI
+          <article className="relative pl-8 md:pl-12">
+            <div className="absolute -left-[5px] md:-left-[6px] top-2 h-2.5 w-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700 ring-4 ring-white dark:ring-zinc-950" />
+            <header className="mb-6">
+              <h2 className="text-xl md:text-2xl font-bold text-zinc-800 dark:text-zinc-100 tracking-tight">
+                American Muslim Center Dearborn
               </h2>
-              <time className="text-neutral-600 dark:text-neutral-400 text-sm">
-                Software Engineer - Contract, MARCH 2024 — January 2025
+              <time className="block mt-2 text-sm font-medium text-zinc-500 uppercase tracking-wide">
+                Software Engineer • Mar 2024 — Jan 2025
               </time>
             </header>
-            <p>
-              At the American Muslim Center, Dearborn, I work with a team of developers to build applications that
-              adress community challenges  using Next.js, JavaScript, MongoDB, and various APIs. My role focuses on coming up with creative
-              ideas and developing these applications alongside my team.
-            </p>
-            <ul>
-              <li>
-                Engineered a digital ecosystem for 1,000+ members using React, TypeScript, MongoDB, and Stripe, delivering an
-                Event Platform and gamified Educational Portal, managing the full SDLC from design to deployment
-              </li>
-            </ul>
+            <div className="prose prose-zinc dark:prose-invert max-w-none text-zinc-600 dark:text-zinc-400">
+              <p>
+                Built full-stack community web applications with Next.js, TypeScript, and MongoDB to streamline event operations and member engagement.
+              </p>
+              <ul>
+                <li>
+                  Built a Stripe event registration platform and gamified quiz portal for 1,000+ members, automating ticket payments and attendee tracking (Next.js, TypeScript, MongoDB).
+                </li>
+              </ul>
+            </div>
           </article>
 
-          <article>
-            <header>
-              <h2 className="font-medium text-xl mb-1 tracking-tighter">
-                Headstarter AI, Remote/New York
-              </h2>
-              <time className="text-neutral-600 dark:text-neutral-400 text-sm">
-                Software Engineer Fellow, July 2024 — October 2024
-              </time>
-            </header>
-            <p>
-              I joined{" "}
-              <a href="https://headstarter.co/" rel="noopener noreferrer">
+          <article className="relative pl-8 md:pl-12">
+            <div className="absolute -left-[5px] md:-left-[6px] top-2 h-2.5 w-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700 ring-4 ring-white dark:ring-zinc-950" />
+            <header className="mb-6">
+              <h2 className="text-xl md:text-2xl font-bold text-zinc-800 dark:text-zinc-100 tracking-tight">
                 Headstarter AI
-              </a>{" "}
-              , a fellowship with over 3,000 participants, my team and I were the winners. As team lead from July to October 2024, We developed several applications such as using Python and Next.js that reached over 8,000 users.
-            </p>
-            <ul>
-              <li>
-                Developed and deployed 5+ AI-powered applications using React, Python, OpenAI API, DynamoDB, and AWS,
-                serving 8,000+ users with real-time chat, voice interfaces, and intelligent automation
-              </li>
-              <li>
-                Led 4 engineers to deliver production-grade applications using MVC, Agile, CI/CD, and microservices
-              </li>
-            </ul>
-          </article>
-
-          <article>
-            <header>
-              <h2 className="font-medium text-xl mb-1 tracking-tighter">
-                University of Mount Union, Alliance - OH  </h2>
-              <time className="text-neutral-600 dark:text-neutral-400 text-sm">
-                Computer Science and Math Tutor, December 2020 — December 2023
-              </time>
-            </header>
-            <p>
-              {/* I joined{" "}
-              <a href="https://utilify.xyz" rel="noopener noreferrer">
-                University of Mount Union
-              </a>{" "} */}
-              Helped 90% of students improve their grades from 55% to 85-90% through tutoring in programming and math, and by debugging code in JavaScript, Python, C#, and SQL.
-            </p>
-            <ul>
-              <li>
-                Raised final grades by an average of 35% for 90% of initially failing students by tutoring 12+ students in data
-                structures, algorithms, mathematics, and debugging across Java, Python, C#, Swift, and SQL
-              </li>
-            </ul>
-          </article>
-
-          <article>
-            <header>
-              <h2 className="font-medium text-xl mb-1 tracking-tighter">
-                ACBSP in VR Technologies - Startup & Research, Alliance - Ohio
               </h2>
-              <time className="text-neutral-600 dark:text-neutral-400 text-sm">
-                Research Software Engineer, September 2022 — September 2023
+              <time className="block mt-2 text-sm font-medium text-zinc-500 uppercase tracking-wide">
+                Software Engineering Fellow • Jul 2024 — Oct 2024
               </time>
             </header>
-            <p>
-              {/* I joined{" "}
-              <a href="" rel="noopener noreferrer">
-              ACBSP in VR Technologies (Advance Congnative Behavioral Solutions & Pychology )
-              </a>{" "} */}
-              At the startup, I contributed to a research study by designing interfaces and developing a VR action game in Unity using C# and the Oculus SDK.            </p>
-            <ul>
-              <li>
-                Built a VR action game in Unity using C# and Oculus SDK for psychological research, designing interactive
-                object-dismemberment mechanics to stimulate prefrontal cortex engagement and reduce stress and anxiety by 30%
-              </li>
-            </ul>
+            <div className="prose prose-zinc dark:prose-invert max-w-none text-zinc-600 dark:text-zinc-400">
+              <p>
+                Finished among 10 winners out of 3,000 teams, leading system architecture and code reviews to ship full-stack AI applications at scale.
+              </p>
+              <ul>
+                <li>
+                  Led a 4-engineer team that finished among 10 winners out of 3,000 teams and shipped 5 AI apps to 9,000+ users, designing system architecture and reviewing code (Go, Python, React, TypeScript, DynamoDB, AWS).
+                </li>
+                <li>
+                  Built TradeWise, a real-time financial analysis app (Next.js, Llama 3.1 70B) used by 7,000+ of those users.
+                </li>
+              </ul>
+            </div>
           </article>
 
-        </section>
+          <article className="relative pl-8 md:pl-12">
+            <div className="absolute -left-[5px] md:-left-[6px] top-2 h-2.5 w-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700 ring-4 ring-white dark:ring-zinc-950" />
+            <header className="mb-6">
+              <h2 className="text-xl md:text-2xl font-bold text-zinc-800 dark:text-zinc-100 tracking-tight">
+                University of Mount Union
+              </h2>
+              <time className="block mt-2 text-sm font-medium text-zinc-500 uppercase tracking-wide">
+                Software Engineer & Math Tutor • Jan 2024 — Dec 2024
+              </time>
+            </header>
+            <div className="prose prose-zinc dark:prose-invert max-w-none text-zinc-600 dark:text-zinc-400">
+              <p>
+                Tutored students in Systems Programming, Data Structures, Algorithms, and Mathematics.
+              </p>
+              <ul>
+                <li>
+                  Helped 90% of students improve grades significantly through targeted debugging and concept reinforcement.
+                </li>
+              </ul>
+            </div>
+          </article>
 
-        {/* Skills Section */}
-        {/* <SkillsSection /> */}
-
+          <article className="relative pl-8 md:pl-12">
+            <div className="absolute -left-[5px] md:-left-[6px] top-2 h-2.5 w-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700 ring-4 ring-white dark:ring-zinc-950" />
+            <header className="mb-6">
+              <h2 className="text-xl md:text-2xl font-bold text-zinc-800 dark:text-zinc-100 tracking-tight">
+                ACBSP VR Technologies
+              </h2>
+              <time className="block mt-2 text-sm font-medium text-zinc-500 uppercase tracking-wide">
+                Research Software Engineer • Sep 2022 — Oct 2023
+              </time>
+            </header>
+            <div className="prose prose-zinc dark:prose-invert max-w-none text-zinc-600 dark:text-zinc-400">
+              <p>
+                Engineered an interactive VR application in Unity and C# to support empirical psychology research on stress and anxiety reduction.
+              </p>
+              <ul>
+                <li>
+                  Built a VR stress-relief game (Unity, C#, Oculus) for a psychology study that found 30% lower stress and anxiety.
+                </li>
+              </ul>
+            </div>
+          </article>
+        </div>
       </main>
     </Container>
   );

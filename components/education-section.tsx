@@ -31,7 +31,7 @@ const EducationSection: React.FC = () => {
           <li key={edu.institution} className="flex flex-col">
             <div className="flex justify-between items-center mb-1">
               <h3 className="font-medium text-base">
-                <div className="flex items-start">
+                <span className="flex items-start">
                   <LuGraduationCap className="mr-3 h-5 w-5 flex-shrink-0 text-neutral-500 dark:text-neutral-400 hidden md:inline-block" />
                   {edu.url ? (
                     <a
@@ -45,7 +45,7 @@ const EducationSection: React.FC = () => {
                   ) : (
                     <span>{edu.institution}</span>
                   )}
-                </div>
+                </span>
               </h3>
               <time className="text-xs text-neutral-500 dark:text-neutral-500">
                 {formatDateRange(edu.startDate, edu.endDate)}
@@ -81,7 +81,7 @@ const EducationSection: React.FC = () => {
                 <div className="flex justify-between items-center"> {/* Removed mb-1 as there's no second line */}
                   {/* Achievement Name */}
                   <h4 className="font-medium text-base"> {/* Use h4 for semantic hierarchy */}
-                    <div className="flex items-start">
+                    <span className="flex items-start">
                       <LuAward className="mr-3 h-5 w-5 flex-shrink-0 text-neutral-500 dark:text-neutral-400 hidden md:inline-block" />
                       {ach.url ? (
                         <a
@@ -95,7 +95,7 @@ const EducationSection: React.FC = () => {
                       ) : (
                         <span>{ach.name}</span>
                       )}
-                    </div>
+                    </span>
                   </h4>
                   {/* Achievement Location (like date range) */}
                   {ach.location && (
