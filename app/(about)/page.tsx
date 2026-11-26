@@ -1,4 +1,5 @@
 import Container from "@/components/shared/container";
+import Link from "next/link";
 import Social from "@/components/social";
 import Script from "next/script";
 import SkillsSection from "@/components/skills-section";
@@ -31,23 +32,31 @@ export default function About() {
         Hi, I&apos;m Ahthesham.
       </p>
       <p className="leading-relaxed">
-        As a Software Engineer at{" "}
+        I work as a Software Engineer at{" "}
         <span className="font-medium decoration-wavy underline decoration-from-font text-emerald-950 decoration-emerald-500 dark:text-emerald-50 dark:decoration-emerald-400 tracking-tight">
           Captain Jay&apos;s Corporate
-        </span>
-        , where I also work as a Forward Deployed Engineer, I focus on
-        developing comprehensive applications that deliver value across various
-        aspects of software. My expertise bridges the gap between design and
-        functionality, reflecting my passion for creating seamless user
-        experiences.
+        </span>{" "}
+        in Dearborn, Michigan. I find where software and AI can cut costs and
+        manual work across 27 restaurants and 462 employees, scope each project
+        with operations leaders, write the system design, then ship the FastAPI
+        and PostgreSQL backend and Next.js app.
+      </p>
+      <p className="mt-6 leading-relaxed">
+        Much of that work is agentic AI pipelines that take over tasks people
+        used to do by hand. One grades store audit photos against standards I
+        set with the CEO, ranks all 27 stores, and drafts coaching plans, saving
+        our director of operations 13+ hours a week. Another is our AI phone
+        ordering agent, where I raised order accuracy from 50% to 90% (
+        <Link href="/blog/ai-phone-ordering-50-to-90" className="underline">
+          how I did it
+        </Link>
+        ).
       </p>
       <p className="mt-6 mb-8 leading-relaxed">
-        Driven by a love for software development, I thrive on leveraging user
-        feedback to enhance products and optimize workflows. I find particular
-        excitement in building solutions that streamline processes and
-        contribute to impactful projects. Outside of work, I enjoy crafting
-        minimalist digital tools that address web-related challenges and improve
-        development efficiency.
+        I like planning and building things and figuring out how systems work.
+        Before writing code, I go into stores and talk with the people who use
+        the software. My interests are backend systems, applied AI, and
+        robotics.
       </p>
       <EducationSection />
       <SkillsSection />
