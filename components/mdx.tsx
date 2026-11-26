@@ -12,6 +12,7 @@ import {
   ChannelSimulator,
   CodePlayground,
   GoroutineScheduler,
+  OrderFlowExplorer,
   RaceConditionVisualizer,
   TaskSimulator,
   UnbufferedChannelDemo,
@@ -293,6 +294,7 @@ const components = {
   ChannelSimulator,
   UnbufferedChannelDemo,
   CodePlayground,
+  OrderFlowExplorer,
 };
 
 export function CustomMDX({ source }: { source: string }) {

@@ -1,0 +1,59 @@
+---
+title: 'How I Took AI Phone Ordering From 50% to 90% Accuracy'
+publishedAt: '2026-11-26'
+summary: 'A restaurant chain kept losing phone orders at rush hour. Here is how I found the problem, why I chose to buy instead of build, and how a state flow and a strict JSON schema fixed the AI.'
+keywords: voice AI, LLM agents, prompt engineering, JSON schema, restaurant tech, case study
+---
+
+## TL;DR
+
+Short-staffed cashiers at a 27-location restaurant chain were unplugging the store phones at rush hour, and we were losing orders on our biggest promotions.
+
+I dropped an in-house prototype, led the vendor evaluation, and rolled a voice AI platform out to all 27 stores with 50 AI agents taking calls at once. Then I worked with the vendor's senior engineer to redesign the order state flow, the prompt architecture, and the JSON schema that sends orders to the POS.
+
+Live phone order accuracy went from 50% to 90%, the invented promotion orders stopped, and each store now runs with one fewer cashier, which projects to about $865K a year in labor savings.
+
+## The problem I found
+
+I've been a software engineer at Captain Jay's since January 2025. The company is headquartered in Dearborn, Michigan, and runs 27 restaurants.
+
+Nobody handed me a ticket for this one. I kept getting busy signals when I called our stores, so I checked the store cameras and saw the phone line was off. When I went on site, the phone was unplugged.
+
+At rush hour, short-staffed cashiers were unplugging the phones. Phone orders were getting lost during exactly the promotions that were supposed to bring in the most business.
+
+## Build or buy
+
+My first step was to prototype our own voice ordering agent.
+
+Two things stopped it. Connecting a custom agent to our NCR Aloha POS required a paid NCR license with large fees. And I was the only developer, so building and maintaining a live phone ordering system for 27 restaurants would have taken far too long.
+
+I stopped the in-house build and moved to a voice AI vendor. I led the vendor evaluation and rolled the platform out to all 27 locations, with 50 AI agents able to take calls at the same time.
+
+## Why the agent got orders wrong
+
+Answering every call fixed the busy signals, but live accuracy sat at 50%. The agent was getting orders wrong across stores, and the worst of it came on our highest-volume weekly promotion, where it was inventing orders and adding items the caller never asked for.
+
+The agent treated ordering as free-form chat. There were no stages to the call and no strict check before an order went to the POS, so when a promotion call got messy, the model guessed and the guess went straight to the kitchen.
+
+<OrderFlowExplorer />
+
+## The fix
+
+I worked with the vendor's senior engineer through design reviews to rebuild how an order gets from a phone call into the POS.
+
+We replaced the free-form chat with an order state flow. The call now moves through set stages, from taking the order to confirming and checking it, before anything reaches the register. We rebuilt the prompt architecture to fit that flow.
+
+I also designed a strict JSON schema for the order payload the POS receives. An item or modifier that doesn't match the real menu fails validation and can't go through.
+
+## Results
+
+Live phone order accuracy went from 50% to 90% across all 27 restaurants, and the invented orders on our big weekly promotion stopped. Each store now runs with one fewer cashier. Across 27 locations, that projects to about $865K a year in labor savings.
+
+## What I'd do the same next time
+
+- Watch the real operation before building. I only found this problem because I called the stores, checked the cameras, and went on site.
+- Treat build vs buy as an engineering decision. Stopping my own prototype saved us the NCR licensing fees and the maintenance load that would have buried a solo developer.
+- Give LLM agents structure before you give them longer prompts. Set stages and a strict schema leave the model less room to guess.
+- Validate at the boundary. Bad model output should fail a schema check before it can reach a kitchen ticket.
+
+If you're building voice or AI agents, email me at [ahtheshamali786@gmail.com](mailto:ahtheshamali786@gmail.com).

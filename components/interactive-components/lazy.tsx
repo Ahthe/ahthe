@@ -45,3 +45,8 @@ export const CodePlayground = dynamic(
   () => import("./code-playground").then((m) => m.CodePlayground),
   { ssr: false }
 );
+
+export const OrderFlowExplorer = dynamic(
+  () => import("./order-flow-explorer").then((m) => m.OrderFlowExplorer),
+  { ssr: false }
+);
